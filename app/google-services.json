@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "208714147068",
+    "firebase_url": "https://languages4u-fdf6b.firebaseio.com",
+    "project_id": "languages4u-fdf6b",
+    "storage_bucket": "languages4u-fdf6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208714147068:android:ddbff83ce373ec2b4ea379",
+        "android_client_info": {
+          "package_name": "com.languages4u"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208714147068-ggn55o4vdssfrspr8qrcqceoo4lrvovv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.languages4u",
+            "certificate_hash": "540be11a5923f43aa9f6c5dcbc7bf6b3f19db29d"
+          }
+        },
+        {
+          "client_id": "208714147068-5qnkt3bgnd53o2mu3e3ueg4ud1nf1fla.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtbucVn4plCFeDplyQM3xyLGhJTc7k80g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208714147068-5qnkt3bgnd53o2mu3e3ueg4ud1nf1fla.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
