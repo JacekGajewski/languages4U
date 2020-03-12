@@ -11,6 +11,7 @@
     <string name="log_in">Log In</string>
     <string name="reset_password">Reset password</string>
     <string name="reset_password_instructions">Enter your registration email to send you password reset instructions.</string>
+    <string name="save_button">save</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

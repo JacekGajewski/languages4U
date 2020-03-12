@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:visibility="visible">
+
+    <!-- TODO labels, category, etc.
+    -->
+
+    <!-- All text attributes will ref to ViewModel LiveData values like:
+    android:text="@=AddQuestionViewModel.mAnswer_A" -->
+
+    <EditText
+        android:id="@+id/editText_add_question"
+        android:layout_width="@dimen/questionEtWidth"
+        android:layout_height="@dimen/questionEtHeight"
+        android:background="@drawable/edit_question_canvas"
+        android:hint="Add Question"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_save" />
+
+    <EditText
+        android:id="@+id/edittext_answer_a"
+        android:layout_width="@dimen/answerBtWidth"
+        android:layout_height="@dimen/answerBtHeight"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_answer_canvas"
+        android:hint="ADD ANSWER A"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_add_question" />
+
+    <EditText
+        android:id="@+id/edittext_answer_b"
+        android:layout_width="@dimen/answerBtWidth"
+        android:layout_height="@dimen/answerBtHeight"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_answer_canvas"
+        android:hint="ADD ANSWER B"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_answer_a" />
+
+    <EditText
+        android:id="@+id/edittext_answer_c"
+        android:layout_width="@dimen/answerBtWidth"
+        android:layout_height="@dimen/answerBtHeight"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_answer_canvas"
+        android:hint="ADD ANSWER C"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_answer_b" />
+
+    <EditText
+        android:id="@+id/edittext_answer_d"
+        android:layout_width="@dimen/answerBtWidth"
+        android:layout_height="@dimen/answerBtHeight"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_answer_canvas"
+        android:hint="ADD ANSWER D"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_answer_c" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="@dimen/smallBtWidth"
+        android:layout_height="@dimen/smallBtHeight"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_button_small"
+        android:text="@string/save_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

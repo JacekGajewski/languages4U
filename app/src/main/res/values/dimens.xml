@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="smallBtHeight">30dp</dimen>
+    <dimen name="smallBtWidth">90dp</dimen>
+
     <dimen name="answerBtHeight">60dp</dimen>
     <dimen name="answerBtWidth">300dp</dimen>
 
     <dimen name="questionEtHeight">300dp</dimen>
     <dimen name="questionEtWidth">350dp</dimen>
+
+    <dimen name="answerStrokeWidth">3dp</dimen>
 </resources>
