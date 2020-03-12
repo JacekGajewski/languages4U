@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:visibility="visible">
+
+    <EditText
+        android:id="@+id/editText_question"
+        android:layout_width="@dimen/questionEtWidth"
+        android:layout_height="@dimen/questionEtHeight"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/question_canvas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Button text will look like this:
+    android:text="@=QuestionViewModel.mAnswer_A"
+    It's reference to ViewModel, currently not present -->
+    <Button
+        android:id="@+id/button_answer_a"
+        android:layout_width="@dimen/answerBtWidth"
+        android:layout_height="@dimen/answerBtHeight"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_button"
+        android:text="ANSWER A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_question" />
+
+    <Button
+        android:id="@+id/button_answer_b"
+        android:layout_width="@dimen/answerBtWidth"
+        android:layout_height="@dimen/answerBtHeight"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_button"
+        android:text="ANSWER B"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_answer_a" />
+
+    <Button
+        android:id="@+id/button_answer_c"
+        android:layout_width="@dimen/answerBtWidth"
+        android:layout_height="@dimen/answerBtHeight"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_button"
+        android:text="ANSWER C"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_answer_b" />
+
+    <Button
+        android:id="@+id/button_answer_d"
+        android:layout_width="@dimen/answerBtWidth"
+        android:layout_height="@dimen/answerBtHeight"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_button"
+        android:text="ANSWER D"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_answer_c" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
