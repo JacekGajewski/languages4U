@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="answerBtHeight">60dp</dimen>
+    <dimen name="answerBtWidth">300dp</dimen>
+
+    <dimen name="questionEtHeight">300dp</dimen>
+    <dimen name="questionEtWidth">350dp</dimen>
+</resources>
