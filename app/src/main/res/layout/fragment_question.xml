@@ -7,19 +7,21 @@
     android:fitsSystemWindows="true"
     android:visibility="visible">
 
+    <!-- All text attributes will ref to ViewModel LiveData values like:
+    android:text="@=QuestionViewModel.mAnswer_A" -->
+
     <EditText
         android:id="@+id/editText_question"
         android:layout_width="@dimen/questionEtWidth"
         android:layout_height="@dimen/questionEtHeight"
         android:layout_marginTop="8dp"
         android:background="@drawable/question_canvas"
+        android:text="Question"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Button text will look like this:
-    android:text="@=QuestionViewModel.mAnswer_A"
-    It's reference to ViewModel, currently not present -->
     <Button
         android:id="@+id/button_answer_a"
         android:layout_width="@dimen/answerBtWidth"
@@ -27,6 +29,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_button"
         android:text="ANSWER A"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_question" />
@@ -38,7 +41,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_button"
         android:text="ANSWER B"
-        android:visibility="visible"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_answer_a" />
@@ -50,7 +53,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_button"
         android:text="ANSWER C"
-        android:visibility="visible"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_answer_b" />
@@ -62,7 +65,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_button"
         android:text="ANSWER D"
-        android:visibility="visible"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_answer_c" />
