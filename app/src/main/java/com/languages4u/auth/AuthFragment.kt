@@ -41,6 +41,10 @@ class AuthFragment : Fragment() {
             callback.passwordForgottenClicked()
         }
 
+        text_authorization_anonymously.setOnClickListener {
+            callback.loginAnonymously()
+        }
+
         super.onActivityCreated(savedInstanceState)
     }
 }
