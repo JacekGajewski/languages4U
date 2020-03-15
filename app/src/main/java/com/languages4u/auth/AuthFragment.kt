@@ -2,10 +2,13 @@ package com.languages4u.auth
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.facebook.FacebookSdk
+import com.facebook.FacebookSdk.getApplicationContext
 
 import com.languages4u.R
 import kotlinx.android.synthetic.main.fragment_auth.*
@@ -23,6 +26,8 @@ class AuthFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("DUPA", FacebookSdk.isInitialized().toString())
+
         return inflater.inflate(R.layout.fragment_auth, container, false)
 
     }
@@ -43,6 +48,14 @@ class AuthFragment : Fragment() {
 
         text_authorization_anonymously.setOnClickListener {
             callback.loginAnonymously()
+        }
+
+        card_authorization_google.setOnClickListener {
+            callback.loginGoogle()
+        }
+
+        card_authorization_facebook.setOnClickListener {
+            callback.loginFacebook()
         }
 
         super.onActivityCreated(savedInstanceState)

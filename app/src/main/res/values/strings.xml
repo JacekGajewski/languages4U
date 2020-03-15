@@ -13,6 +13,8 @@
     <string name="reset_password_instructions">Enter your registration email to send you password reset instructions.</string>
     <string name="save_button">save</string>
 
+    <!--Facebook Authentication-->
+    <string name="facebook_app_id">3086817214684483</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
