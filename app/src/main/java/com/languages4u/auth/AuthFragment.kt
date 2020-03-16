@@ -26,7 +26,6 @@ class AuthFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("DUPA", FacebookSdk.isInitialized().toString())
 
         return inflater.inflate(R.layout.fragment_auth, container, false)
 
@@ -54,7 +53,7 @@ class AuthFragment : Fragment() {
             callback.loginGoogle()
         }
 
-        card_authorization_facebook.setOnClickListener {
+        login_button_facebook.setOnClickListener {
             callback.loginFacebook()
         }
 

@@ -32,7 +32,7 @@ class AuthActivity : AppCompatActivity(), IAuth {
     val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth
     private lateinit var mGoogleSignInClient: GoogleSignInClient
-    private lateinit var callbackManager: CallbackManager
+    private lateinit var fbCallbackManager: CallbackManager
     private val TAG = "AuthActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -130,12 +130,10 @@ class AuthActivity : AppCompatActivity(), IAuth {
 
     override fun loginFacebook() {
 //  TODO: Disable Facebook Analytics
-
-        // Initialize Facebook Login button
-        callbackManager = CallbackManager.Factory.create()
+        fbCallbackManager = CallbackManager.Factory.create()
 
         login_button_facebook.setReadPermissions("email", "public_profile")
-        login_button_facebook.registerCallback(callbackManager, object :
+        login_button_facebook.registerCallback(fbCallbackManager, object :
             FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 Log.d(TAG, "facebook:onSuccess:$loginResult")
@@ -144,12 +142,10 @@ class AuthActivity : AppCompatActivity(), IAuth {
 
             override fun onCancel() {
                 Log.d(TAG, "facebook:onCancel")
-                // ...
             }
 
             override fun onError(error: FacebookException) {
                 Log.d(TAG, "facebook:onError", error)
-                // ...
             }
         })
     }
@@ -173,6 +169,8 @@ class AuthActivity : AppCompatActivity(), IAuth {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        fbCallbackManager.onActivityResult(requestCode, resultCode, data);
+
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == 2) {
@@ -195,12 +193,10 @@ class AuthActivity : AppCompatActivity(), IAuth {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
                     startMainActivity(user)
                 } else {
-                    // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                 }
             }
