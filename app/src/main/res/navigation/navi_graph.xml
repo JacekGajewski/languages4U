@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi_graph"
+    app:startDestination="@id/authView">
+    <fragment
+        android:id="@+id/authView"
+        android:name="com.languages4u.view.AuthView"
+        android:label="AuthView" >
+        <action
+            android:id="@+id/action_authView_to_passwordRecoveryView"
+            app:destination="@id/passwordRecoveryView" />
+        <action
+            android:id="@+id/action_authView_to_signInView"
+            app:destination="@id/signInView" />
+        <action
+            android:id="@+id/action_authView_to_signUpView"
+            app:destination="@id/signUpView" />
+        <action
+            android:id="@+id/action_authView_to_menuView"
+            app:destination="@id/menuView" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpView"
+        android:name="com.languages4u.view.SignUpView"
+        android:label="SignUpView" />
+    <fragment
+        android:id="@+id/signInView"
+        android:name="com.languages4u.view.SignInView"
+        android:label="SignInView" >
+        <action
+            android:id="@+id/action_signInView_to_menuView"
+            app:destination="@id/menuView" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuView"
+        android:name="com.languages4u.view.MenuView"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuView_to_addQuizView"
+            app:destination="@id/addQuizView" />
+        <action
+            android:id="@+id/action_menuView_to_chooseQuizView"
+            app:destination="@id/chooseQuizView" />
+    </fragment>
+    <fragment
+        android:id="@+id/addQuizView"
+        android:name="com.languages4u.view.AddQuizView"
+        android:label="fragment_add_quiz"
+        tools:layout="@layout/fragment_add_quiz" />
+    <fragment
+        android:id="@+id/passwordRecoveryView"
+        android:name="com.languages4u.view.PasswordRecoveryView"
+        android:label="fragment_pass_recovery"
+        tools:layout="@layout/fragment_pass_recovery" />
+    <fragment
+        android:id="@+id/chooseQuizView"
+        android:name="com.languages4u.view.ChooseQuizView"
+        android:label="fragment_choose_quiz"
+        tools:layout="@layout/fragment_choose_quiz" >
+        <action
+            android:id="@+id/action_chooseQuizView_to_playQuizView"
+            app:destination="@id/playQuizView" />
+    </fragment>
+    <fragment
+        android:id="@+id/playQuizView"
+        android:name="com.languages4u.view.PlayQuizView"
+        android:label="fragment_play_quiz"
+        tools:layout="@layout/fragment_play_quiz" >
+        <action
+            android:id="@+id/action_playQuizView_to_questionView"
+            app:destination="@id/questionView" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionView"
+        android:name="com.languages4u.view.QuestionView"
+        android:label="QuestionView" />
+</navigation>

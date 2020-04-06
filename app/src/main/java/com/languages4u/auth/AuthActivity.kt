@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -22,12 +23,13 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.languages4u.MainActivity
+import com.languages4u.view.MainActivity
 import com.languages4u.R
 import kotlinx.android.synthetic.main.fragment_auth.*
 
 
-class AuthActivity : AppCompatActivity(), IAuth {
+class AuthActivity : AppCompatActivity(){
+
 
     val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth
@@ -36,14 +38,17 @@ class AuthActivity : AppCompatActivity(), IAuth {
     private val TAG = "AuthActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i(TAG, "onCreate()")
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        //setContentView(R.layout.activity_auth)
+
+        //val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
 
         if (currentUser != null) {
-            startMainActivity(currentUser)
+            //startMainActivity(currentUser)
         }
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -53,19 +58,20 @@ class AuthActivity : AppCompatActivity(), IAuth {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        startFragment(AuthFragment())
+        //startFragment(AuthFragment())
     }
+    /*
 
     override fun loginClicked() {
-        startFragment(LoginFragment())
+        //startFragment(LoginFragment())
     }
 
     override fun signUpClicked() {
-        startFragment(SignUpFragment())
+        //startFragment(SignUpFragment())
     }
 
     override fun passwordForgottenClicked() {
-        startFragment(PasswordRecoveryFragment())
+        //startFragment(PasswordRecoveryFragment())
     }
 
     override fun signUp(email: String, password: String) {
@@ -202,17 +208,19 @@ class AuthActivity : AppCompatActivity(), IAuth {
             }
     }
 
-    private fun startFragment(fragment: Fragment) {
+    /*private fun startFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_main, fragment)
             .addToBackStack(null)
             .commit()
-    }
+    } */
 
     private fun startMainActivity(user: FirebaseUser?) {
 //        TODO: Pass the user data to MainActivity.
         val intent = Intent(this, MainActivity::class.java).apply { }
         startActivity(intent)
     }
+    */
+
 }
 
