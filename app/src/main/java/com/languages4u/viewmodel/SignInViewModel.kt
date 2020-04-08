@@ -28,14 +28,16 @@ class SignInViewModel : ViewModel(), ILoginCallback{
     }
 
     fun onLoginClick(view : View) {
-        Log.i(TAG, "onLoginClick()")
         // TODO; handle NULL values (empty editview)
         firebase.login(email.value!!, password.value!!, this)
     }
 
-    fun onLoginAnnonymClick(view : View) {
-        Log.i(TAG, "onLoginClick()")
+    fun onLoginAnonymClick(view : View) {
         firebase.loginAnonymously(this)
+    }
+
+    fun onForgotPasswordClick(view : View) {
+        navigatePage.value = NaviEvent.ForgotPass.event
     }
 
     override fun onSuccess() {
@@ -46,5 +48,4 @@ class SignInViewModel : ViewModel(), ILoginCallback{
     override fun onFailure() {
         Log.i(TAG, "onFailure()")
     }
-
 }

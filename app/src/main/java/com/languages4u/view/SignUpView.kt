@@ -1,34 +1,58 @@
 package com.languages4u.view
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.languages4u.R
+import com.languages4u.data.NaviEvent
+import com.languages4u.databinding.FragmentSignUpBinding
 import com.languages4u.viewmodel.SignUpViewModel
 
 class SignUpView : Fragment() {
+    private val TAG = "SignUpView"
 
     companion object {
         fun newInstance() = SignUpView()
     }
 
     private lateinit var viewModel: SignUpViewModel
+    private lateinit var binding: FragmentSignUpBinding
+    var navController: NavController? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_sign_up, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container, false)
+        viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
+        binding.signUpViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel.navigatePage.observe(viewLifecycleOwner, naviObserver)
     }
 
+    val naviObserver = Observer<String> { newNavi ->
+        Log.d(TAG, "Observer called")
+        when (newNavi!!) {
+            NaviEvent.MenuPage.event -> navController!!.navigate(R.id.action_signUpView_to_menuView)
+        }
+    }
 }

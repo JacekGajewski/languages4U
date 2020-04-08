@@ -1,6 +1,7 @@
 package com.languages4u.data
 
 enum class NaviEvent(val event : String) {
+    Authorization("AUTHORIZATION"),
     LogIn("LOGIN"),
     SingUp("SINGUP"),
     GoogleSingIn("GOOGLESINGIN"),

@@ -7,7 +7,8 @@
     <fragment
         android:id="@+id/authView"
         android:name="com.languages4u.view.AuthView"
-        android:label="AuthView" >
+        android:label="AuthView"
+        tools:layout="@layout/fragment_auth">
         <action
             android:id="@+id/action_authView_to_passwordRecoveryView"
             app:destination="@id/passwordRecoveryView" />
@@ -24,14 +25,32 @@
     <fragment
         android:id="@+id/signUpView"
         android:name="com.languages4u.view.SignUpView"
-        android:label="SignUpView" />
+        android:label="SignUpView"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUpView_to_menuView"
+            app:destination="@id/menuView" />
+    </fragment>
     <fragment
         android:id="@+id/signInView"
         android:name="com.languages4u.view.SignInView"
-        android:label="SignInView" >
+        android:label="SignInView"
+        tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_signInView_to_menuView"
             app:destination="@id/menuView" />
+        <action
+            android:id="@+id/action_signInView_to_passwordRecoveryView"
+            app:destination="@id/passwordRecoveryView" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordRecoveryView"
+        android:name="com.languages4u.view.PasswordRecoveryView"
+        android:label="fragment_pass_recovery"
+        tools:layout="@layout/fragment_pass_recovery" >
+        <action
+            android:id="@+id/action_passwordRecoveryView_to_navi_graph"
+            app:destination="@id/authView" />
     </fragment>
     <fragment
         android:id="@+id/menuView"
@@ -50,11 +69,6 @@
         android:name="com.languages4u.view.AddQuizView"
         android:label="fragment_add_quiz"
         tools:layout="@layout/fragment_add_quiz" />
-    <fragment
-        android:id="@+id/passwordRecoveryView"
-        android:name="com.languages4u.view.PasswordRecoveryView"
-        android:label="fragment_pass_recovery"
-        tools:layout="@layout/fragment_pass_recovery" />
     <fragment
         android:id="@+id/chooseQuizView"
         android:name="com.languages4u.view.ChooseQuizView"

@@ -1,99 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:visibility="visible">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="PasswordRecoveryViewModel"
+            type="com.languages4u.viewmodel.PasswordRecoveryViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/text_password_recovery_app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="42sp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.265"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <EditText
-        android:id="@+id/edit_password_recovery_help"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.21"
-        app:layout_constraintTop_toBottomOf="@+id/text_password_recovery_app_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#00000000" />
-
-    <TextView
-        android:id="@+id/text_password_recovery_instruction"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.052"
-        app:layout_constraintTop_toBottomOf="@+id/edit_password_recovery_help"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/reset_password_instructions"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
-
-    <EditText
-        android:id="@+id/edit_password_recovery_email"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.085"
-        app:layout_constraintTop_toBottomOf="@+id/text_password_recovery_instruction"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#A6000000"
-        android:drawableStart="@drawable/ic_email"
-        android:drawablePadding="8dp"
-        android:ems="10"
-        android:hint="@string/e_mail"
-        android:inputType="textPassword"
-        android:shadowColor="@color/white"
-        android:textColor="@color/white"
-        android:textColorHighlight="@color/white"
-        android:textColorHint="@color/white"
-        android:theme="@style/EditTextLogin" />
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_password_recovery_recover"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cardBackgroundColor="#99000000"
-        app:cardElevation="10dp"
-        app:layout_constraintVertical_bias="0.12"
-        app:layout_constraintTop_toBottomOf="@+id/edit_password_recovery_email"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:visibility="visible">
 
         <TextView
+            android:id="@+id/text_password_recovery_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="42sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.265" />
+
+        <EditText
+            android:id="@+id/edit_password_recovery_help"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="#00000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_password_recovery_app_name"
+            app:layout_constraintVertical_bias="0.21" />
+
+        <TextView
+            android:id="@+id/text_password_recovery_instruction"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
             android:gravity="center"
-            android:text="@string/reset_password"
+            android:text="@string/reset_password_instructions"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_password_recovery_help"
+            app:layout_constraintVertical_bias="0.052" />
+
+        <EditText
+            android:id="@+id/edit_password_recovery_email"
+            android:text="@={PasswordRecoveryViewModel.email}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="#A6000000"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="@string/e_mail"
+            android:inputType="textPassword"
+            android:shadowColor="@color/white"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textColorHighlight="@color/white"
+            android:textColorHint="@color/white"
+            android:theme="@style/EditTextLogin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_password_recovery_instruction"
+            app:layout_constraintVertical_bias="0.085" />
 
-    </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_password_recovery_recover"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:cardBackgroundColor="#99000000"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_password_recovery_email"
+            app:layout_constraintVertical_bias="0.12">
+
+            <TextView
+                android:onClick="@{(v) -> PasswordRecoveryViewModel.onResetClicked(v)}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/reset_password"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

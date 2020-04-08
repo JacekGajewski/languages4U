@@ -102,10 +102,10 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
+                android:onClick="@{(v) -> SingInViewModel.onLoginClick(v)}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:onClick="@{(v) -> SingInViewModel.onLoginClick(v)}"
                 android:text="@string/log_in"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -113,7 +113,7 @@
 
         <TextView
             android:id="@+id/text_login_anonymously"
-            android:onClick="@{(v) -> SingInViewModel.onLoginAnnonymClick(v)}"
+            android:onClick="@{(v) -> SingInViewModel.onLoginAnonymClick(v)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_anonymously"
@@ -127,6 +127,7 @@
 
         <TextView
             android:id="@+id/text_login_forgot_password"
+            android:onClick="@{(v) -> SingInViewModel.onForgotPasswordClick(v)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forgot_your_password"

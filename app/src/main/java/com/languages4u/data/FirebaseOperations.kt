@@ -43,6 +43,10 @@ class FirebaseOperations {
         }
     }
 
+    fun recoverPassword(email: String) {
+//        TODO: Implement password recovering
+    }
+
     fun currentUser() = firebaseAuth.currentUser
     fun logout() = firebaseAuth.signOut()
 
