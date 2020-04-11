@@ -24,6 +24,11 @@ class AuthViewModel : ViewModel(), ILoginCallback {
         SingleLiveEvent<Boolean>() //SingleLiveEvent
     }
 
+    val facebookClick : MutableLiveData<Boolean> by lazy {
+        SingleLiveEvent<Boolean>() //SingleLiveEvent
+    }
+
+
     fun onLoginClick(view : View) {
         Log.i(TAG, "onLoginClick()")
         navigatePage.value = NaviEvent.LogIn.event
@@ -42,7 +47,7 @@ class AuthViewModel : ViewModel(), ILoginCallback {
     }
 
     fun onLoginFacebookClick(view : View) {
-        navigatePage.value = NaviEvent.FacebookSingIn.event
+        facebookClick.value = true
     }
 
     fun onLoginGoogleClick(view : View) {
