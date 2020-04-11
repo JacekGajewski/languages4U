@@ -34,6 +34,8 @@ import kotlinx.android.synthetic.main.fragment_auth.*
 class AuthView : Fragment() {
     val TAG = "AuthView"
 
+    private val RC_SIGN_IN = 102 //GOOGLE REQUEST CODE
+
     private lateinit var fbCallbackManager: CallbackManager
     private lateinit var auth: FirebaseAuth
 
@@ -146,29 +148,28 @@ class AuthView : Fragment() {
 
         val mGoogleSignInClient = GoogleSignIn.getClient(activity!!, gso)
         val signInIntent = mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent, 2)
+        startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
         Log.i(TAG, "onActivityResult()")
         super.onActivityResult(requestCode, resultCode, data)
 
-        fbCallbackManager.onActivityResult(requestCode, resultCode, data)
+        // GOOGLE
+        if (requestCode == RC_SIGN_IN) {
 
-        val iLoginCallback = object : ILoginCallback {
-            override fun onSuccess() {
-                Log.i(TAG, "Google iLoginCallback onSuccess()")
-                navController!!.navigate(R.id.action_authView_to_menuView)
+            val iLoginCallback = object : ILoginCallback {
+                override fun onSuccess() {
+                    Log.i(TAG, "Google iLoginCallback onSuccess()")
+                    navController!!.navigate(R.id.action_authView_to_menuView)
+                }
+
+                override fun onFailure() {
+                    Log.i(TAG, "Google iLoginCallback onFailure()")
+                }
             }
 
-            override fun onFailure() {
-                Log.i(TAG, "Google iLoginCallback onFailure()")
-            }
-        }
-
-        if (requestCode == 2) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             Log.d(TAG, "getSignedInAccountFromIntent")
             try {
@@ -178,6 +179,8 @@ class AuthView : Fragment() {
                 Log.e(TAG, "Google sign in failed", e)
                 Toast.makeText(activity, "Log in fail", Toast.LENGTH_SHORT).show()
             }
+        } else { // FACEBOOK
+            fbCallbackManager.onActivityResult(requestCode, resultCode, data)
         }
     }
 }
