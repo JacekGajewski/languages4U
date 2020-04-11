@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.languages4u.auth.ILoginCallback
 import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
+import com.languages4u.tools.SingleLiveEvent
 
 class PasswordRecoveryViewModel : ViewModel(), ILoginCallback {
     val TAG = "PasswordRecoveryVM"
@@ -16,9 +17,8 @@ class PasswordRecoveryViewModel : ViewModel(), ILoginCallback {
     }
 
     val navigatePage : MutableLiveData<String> by lazy {
-        MutableLiveData<String>()
+        SingleLiveEvent<String>() //SingleLiveEvent
     }
-
     val email : MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }

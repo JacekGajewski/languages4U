@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.languages4u.auth.ILoginCallback
 import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
+import com.languages4u.tools.SingleLiveEvent
+import com.languages4u.data.ToastEvents
 
 class SignUpViewModel : ViewModel(), ILoginCallback {
 
@@ -17,7 +19,7 @@ class SignUpViewModel : ViewModel(), ILoginCallback {
     }
 
     val navigatePage : MutableLiveData<String> by lazy {
-        MutableLiveData<String>()
+        SingleLiveEvent<String>() //SingleLiveEvent
     }
 
     val email : MutableLiveData<String> by lazy {
@@ -32,10 +34,22 @@ class SignUpViewModel : ViewModel(), ILoginCallback {
         MutableLiveData<String>()
     }
 
+    val toastMsg : MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
     fun onSignUpClick(view : View) {
-        Log.i(TAG, "onLoginClick()")
-        // TODO; handle NULL values (empty editview)
-        firebase.register(email.value!!, password.value!!, this)
+        Log.i(TAG, "onSignUpClick()")
+        if (password.value == null) {
+            Log.i(TAG, "Password = null")
+            toastMsg.value = ToastEvents.WrongPassword.event
+        } else if (password.value != repeatPassword.value) {
+            Log.i(TAG, "Passwords do not match")
+            toastMsg.value = ToastEvents.PassNotMatch.event
+        } else {
+            Log.i(TAG, "firebase.login")
+            firebase.register(email.value!!, password.value!!, this)
+        }
     }
 
     fun onLoginAnnonymClick(view : View) {

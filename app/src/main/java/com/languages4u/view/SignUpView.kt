@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -47,6 +48,7 @@ class SignUpView : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.navigatePage.observe(viewLifecycleOwner, naviObserver)
+        viewModel.toastMsg.observe(viewLifecycleOwner, toastMsgObserver)
     }
 
     val naviObserver = Observer<String> { newNavi ->
@@ -54,5 +56,10 @@ class SignUpView : Fragment() {
         when (newNavi!!) {
             NaviEvent.MenuPage.event -> navController!!.navigate(R.id.action_signUpView_to_menuView)
         }
+    }
+
+    val toastMsgObserver = Observer<String> { msg ->
+        Log.d(TAG, "Toast msg observer called")
+        Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
     }
 }
