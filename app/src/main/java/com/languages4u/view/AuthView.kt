@@ -162,11 +162,14 @@ class AuthView : Fragment() {
             val iLoginCallback = object : ILoginCallback {
                 override fun onSuccess() {
                     Log.i(TAG, "Google iLoginCallback onSuccess()")
+                    // is success then navigate to menu view
+                    // functionality extracted from viewModel, because of onActivityResult dependency
+                    // (workaround)
                     navController!!.navigate(R.id.action_authView_to_menuView)
                 }
 
                 override fun onFailure() {
-                    Log.i(TAG, "Google iLoginCallback onFailure()")
+                    Log.e(TAG, "Google iLoginCallback onFailure()")
                 }
             }
 

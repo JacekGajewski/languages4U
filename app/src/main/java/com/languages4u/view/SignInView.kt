@@ -56,6 +56,4 @@ class SignInView : Fragment() {
             NaviEvent.ForgotPass.event -> navController!!.navigate(R.id.action_signInView_to_passwordRecoveryView)
         }
     }
-
-
 }
