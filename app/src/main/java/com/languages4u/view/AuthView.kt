@@ -73,32 +73,18 @@ class AuthView : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.navigatePage.observe(viewLifecycleOwner, naviObserver)
-        viewModel.googleClick.observe(viewLifecycleOwner, googleClickObserver)
-        viewModel.facebookClick.observe(viewLifecycleOwner, facebookClickObserver)
     }
 
 
     private val naviObserver = Observer<String> { newNavi ->
         Log.d(TAG, "Navi Observer called")
         when (newNavi!!) {
-            NaviEvent.LogIn.event -> navController!!.navigate(R.id.action_authView_to_signInView)
+            NaviEvent.SignIn.event -> navController!!.navigate(R.id.action_authView_to_signInView)
             NaviEvent.SingUp.event -> navController!!.navigate(R.id.action_authView_to_signUpView)
+            NaviEvent.GoogleSingIn.event -> loginGoogle()
+            NaviEvent.FacebookSingIn.event -> loginFacebook()
             NaviEvent.MenuPage.event -> navController!!.navigate(R.id.action_authView_to_menuView)
             NaviEvent.ForgotPass.event -> navController!!.navigate(R.id.action_authView_to_passwordRecoveryView)
-        }
-    }
-
-    private val googleClickObserver = Observer<Boolean> { googleClick ->
-        Log.d(TAG, "Google click Observer called")
-        if (googleClick == true) {
-            loginGoogle()
-        }
-    }
-
-    private val facebookClickObserver = Observer<Boolean> { facebookClick ->
-        Log.d(TAG, "Facebook click Observer called")
-        if (facebookClick == true) {
-            loginFacebook()
         }
     }
 

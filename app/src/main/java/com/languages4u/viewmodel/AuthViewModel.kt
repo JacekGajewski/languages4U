@@ -20,18 +20,9 @@ class AuthViewModel : ViewModel(), ILoginCallback {
         SingleLiveEvent<String>() //SingleLiveEvent
     }
 
-    val googleClick : MutableLiveData<Boolean> by lazy {
-        SingleLiveEvent<Boolean>() //SingleLiveEvent
-    }
-
-    val facebookClick : MutableLiveData<Boolean> by lazy {
-        SingleLiveEvent<Boolean>() //SingleLiveEvent
-    }
-
-
     fun onLoginClick(view : View) {
         Log.i(TAG, "onLoginClick()")
-        navigatePage.value = NaviEvent.LogIn.event
+        navigatePage.value = NaviEvent.SignIn.event
     }
 
     fun onSingUpClick(view : View) {
@@ -47,11 +38,11 @@ class AuthViewModel : ViewModel(), ILoginCallback {
     }
 
     fun onLoginFacebookClick(view : View) {
-        facebookClick.value = true
+        navigatePage.value = NaviEvent.FacebookSingIn.event
     }
 
     fun onLoginGoogleClick(view : View) {
-        googleClick.value = true
+        navigatePage.value = NaviEvent.GoogleSingIn.event
     }
 
     override fun onSuccess() {

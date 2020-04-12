@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.languages4u.R
 import com.languages4u.data.NaviEvent
+import com.languages4u.data.ToastEvent
 import com.languages4u.databinding.FragmentPassRecoveryBinding
 import com.languages4u.viewmodel.PasswordRecoveryViewModel
 
@@ -47,26 +48,18 @@ class PasswordRecoveryView : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.navigatePage.observe(viewLifecycleOwner, naviObserver)
-
+        viewModel.toastMsg.observe(viewLifecycleOwner, toastMsgObserver)
     }
 
     val naviObserver = Observer<String> { newNavi ->
         Log.d(TAG, "Observer called")
         when(newNavi!!) {
-            NaviEvent.Authorization.event -> {
-                showToast("Rest email was send")
+            NaviEvent.Authorization.event ->
                 navController!!.navigate(R.id.action_passwordRecoveryView_to_navi_graph)
-            }
-            NaviEvent.ForgotPassError.event -> {
-                showToast("Error while trying to rest password")
-            }
-            NaviEvent.EmptyInput.event -> {
-                showToast("Please enter a valid email address")
-            }
         }
     }
-
-    private fun showToast(toastText: String) {
-        Toast.makeText(context, toastText, Toast.LENGTH_LONG).show()
+    val toastMsgObserver = Observer<String> { msg ->
+        Log.d(TAG, "Toast msg observer called")
+        Toast.makeText(activity, msg, Toast.LENGTH_LONG).show()
     }
 }

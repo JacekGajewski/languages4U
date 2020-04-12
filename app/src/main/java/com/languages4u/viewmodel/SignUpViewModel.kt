@@ -8,7 +8,7 @@ import com.languages4u.auth.ILoginCallback
 import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
 import com.languages4u.tools.SingleLiveEvent
-import com.languages4u.data.ToastEvents
+import com.languages4u.data.ToastEvent
 
 class SignUpViewModel : ViewModel(), ILoginCallback {
 
@@ -42,10 +42,10 @@ class SignUpViewModel : ViewModel(), ILoginCallback {
         Log.i(TAG, "onSignUpClick()")
         if (password.value == null) {
             Log.i(TAG, "Password = null")
-            toastMsg.value = ToastEvents.WrongPassword.event
+            toastMsg.value = ToastEvent.WrongPassword.event
         } else if (password.value != repeatPassword.value) {
             Log.i(TAG, "Passwords do not match")
-            toastMsg.value = ToastEvents.PassNotMatch.event
+            toastMsg.value = ToastEvent.PassNotMatch.event
         } else {
             Log.i(TAG, "firebase.login")
             firebase.register(email.value!!, password.value!!, this)
