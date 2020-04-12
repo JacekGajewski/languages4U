@@ -19,7 +19,7 @@ class FirebaseOperations {
             if (task.isSuccessful) {
                 iLoginCallback.onSuccess()
             } else {
-                iLoginCallback.onFailure()
+                iLoginCallback.onFailure(task.exception)
             }
         }
 
@@ -31,7 +31,7 @@ class FirebaseOperations {
             if (task.isSuccessful) {
                 iLoginCallback.onSuccess()
             } else {
-                iLoginCallback.onFailure()
+                iLoginCallback.onFailure(task.exception)
             }
         }
     }
@@ -41,7 +41,7 @@ class FirebaseOperations {
             if (task.isSuccessful) {
                 iLoginCallback.onSuccess()
             } else {
-                iLoginCallback.onFailure()
+                iLoginCallback.onFailure(task.exception)
             }
         }
     }
@@ -58,7 +58,7 @@ class FirebaseOperations {
 
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    iLoginCallback.onFailure()
+                    iLoginCallback.onFailure(task.exception)
                 }
             }
     }
@@ -69,7 +69,8 @@ class FirebaseOperations {
                 callback.onSuccess()
             }
             else {
-                callback.onFailure()
+                callback.onFailure(task.exception)
+                callback.onFailure(null)
             }
         }
     }

@@ -30,6 +30,7 @@ import com.languages4u.data.NaviEvent
 import com.languages4u.databinding.FragmentAuthBinding
 import com.languages4u.viewmodel.AuthViewModel
 import kotlinx.android.synthetic.main.fragment_auth.*
+import java.lang.Exception
 
 class AuthView : Fragment() {
     val TAG = "AuthView"
@@ -68,6 +69,10 @@ class AuthView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+
+        if (auth.currentUser != null) {
+            navController!!.navigate(R.id.action_authView_to_menuView)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -154,8 +159,9 @@ class AuthView : Fragment() {
                     navController!!.navigate(R.id.action_authView_to_menuView)
                 }
 
-                override fun onFailure() {
+                override fun onFailure(exception: Exception?) {
                     Log.e(TAG, "Google iLoginCallback onFailure()")
+
                 }
             }
 

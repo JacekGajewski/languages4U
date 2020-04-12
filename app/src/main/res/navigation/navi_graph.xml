@@ -29,7 +29,8 @@
         tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpView_to_menuView"
-            app:destination="@id/menuView" />
+            app:destination="@id/menuView"
+            app:popUpTo="@id/authView" />
     </fragment>
     <fragment
         android:id="@+id/signInView"
@@ -38,7 +39,9 @@
         tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_signInView_to_menuView"
-            app:destination="@id/menuView" />
+            app:destination="@id/menuView"
+            app:popUpTo="@id/authView"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_signInView_to_passwordRecoveryView"
             app:destination="@id/passwordRecoveryView" />

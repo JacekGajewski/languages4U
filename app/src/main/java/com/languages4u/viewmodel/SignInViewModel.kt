@@ -9,6 +9,7 @@ import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
 import com.languages4u.data.ToastEvent
 import com.languages4u.tools.SingleLiveEvent
+import java.lang.Exception
 
 class SignInViewModel : ViewModel(), ILoginCallback {
     val TAG = "SignInViewModel"
@@ -64,8 +65,10 @@ class SignInViewModel : ViewModel(), ILoginCallback {
         navigatePage.value = NaviEvent.MenuPage.event
     }
 
-    override fun onFailure() {
+    override fun onFailure(exception: Exception?) {
         Log.i(TAG, "onFailure()")
-        toastMsg.value = ToastEvent.WrongCredentials.event
+        if (exception != null){
+            toastMsg.value = exception.message
+        }
     }
 }

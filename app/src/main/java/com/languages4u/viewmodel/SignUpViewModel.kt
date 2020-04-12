@@ -9,6 +9,7 @@ import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
 import com.languages4u.tools.SingleLiveEvent
 import com.languages4u.data.ToastEvent
+import java.lang.Exception
 
 class SignUpViewModel : ViewModel(), ILoginCallback {
 
@@ -62,8 +63,10 @@ class SignUpViewModel : ViewModel(), ILoginCallback {
         navigatePage.value = NaviEvent.MenuPage.event
     }
 
-    override fun onFailure() {
+    override fun onFailure(exception: Exception?) {
         Log.i(TAG, "onFailure()")
-//        TODO("Not yet implemented")
+        if (exception != null){
+            toastMsg.value = exception.message
+        }
     }
 }

@@ -8,6 +8,7 @@ import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
 import com.languages4u.data.ToastEvent
 import com.languages4u.tools.SingleLiveEvent
+import java.lang.Exception
 
 class PasswordRecoveryViewModel : ViewModel(), ILoginCallback {
     val TAG = "PasswordRecoveryVM"
@@ -45,8 +46,10 @@ class PasswordRecoveryViewModel : ViewModel(), ILoginCallback {
         navigatePage.value = NaviEvent.Authorization.event
     }
 
-    override fun onFailure() {
+    override fun onFailure(exception: Exception?) {
         Log.i(TAG, "onFailure()")
-        toastMsg.value = ToastEvent.WrongEmail.event
+        if (exception != null) {
+            toastMsg.value = exception.message
+        }
     }
 }
