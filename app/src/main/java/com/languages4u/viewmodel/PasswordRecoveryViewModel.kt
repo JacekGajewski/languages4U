@@ -1,7 +1,6 @@
 package com.languages4u.viewmodel
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.languages4u.auth.ILoginCallback
@@ -23,9 +22,13 @@ class PasswordRecoveryViewModel : ViewModel(), ILoginCallback {
         MutableLiveData<String>()
     }
 
-    fun onResetClicked(view : View) {
-        // TODO; handle NULL values (empty editview)
-        firebase.recoverPassword(email.value!!)
+    fun onResetClicked() {
+        if (email.value.isNullOrBlank()
+            || !android.util.Patterns.EMAIL_ADDRESS.matcher(email.value).matches()) {
+            navigatePage.value = NaviEvent.EmptyInput.event
+        } else {
+            firebase.recoverPassword(email.value!!, this)
+        }
     }
 
     override fun onSuccess() {
@@ -35,5 +38,6 @@ class PasswordRecoveryViewModel : ViewModel(), ILoginCallback {
 
     override fun onFailure() {
         Log.i(TAG, "onFailure()")
+        navigatePage.value = NaviEvent.ForgotPassError.event
     }
 }

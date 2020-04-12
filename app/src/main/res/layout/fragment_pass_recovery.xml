@@ -67,7 +67,7 @@
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="@string/e_mail"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:shadowColor="@color/white"
             android:textColor="@color/white"
             android:textColorHighlight="@color/white"
@@ -95,7 +95,7 @@
             app:layout_constraintVertical_bias="0.12">
 
             <TextView
-                android:onClick="@{(v) -> PasswordRecoveryViewModel.onResetClicked(v)}"
+                android:onClick="@{() -> PasswordRecoveryViewModel.onResetClicked()}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"

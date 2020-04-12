@@ -1,6 +1,6 @@
 package com.languages4u.data
 
-enum class NaviEvent(val event : String) {
+enum class NaviEvent(val event: String) {
     Authorization("AUTHORIZATION"),
     LogIn("LOGIN"),
     SingUp("SINGUP"),
@@ -10,5 +10,10 @@ enum class NaviEvent(val event : String) {
     MenuPage("MENUPAGE"),
     ChooseQuizPage("CHOOSEQUIZ"),
     StartQuizPage("STARTQUIZ"),
+
+    //    ERRORS
+    ForgotPassError("FORGOT_PASS_ERROR"),
+    EmptyInput("EMPTY_INPUT"),
+
 
 }

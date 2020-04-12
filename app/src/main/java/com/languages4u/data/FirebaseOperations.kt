@@ -1,13 +1,9 @@
 package com.languages4u.data
 
-import android.provider.Settings.Global.getString
 import android.util.Log
-import androidx.core.app.ActivityCompat.startActivityForResult
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.languages4u.R
 import com.languages4u.auth.ILoginCallback
 
 class FirebaseOperations {
@@ -20,12 +16,13 @@ class FirebaseOperations {
     fun login(email: String, password: String, iLoginCallback: ILoginCallback) {
         Log.i(TAG, "login()")
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    iLoginCallback.onSuccess()
-                } else {
-                    iLoginCallback.onFailure()
-                }
+            if (task.isSuccessful) {
+                iLoginCallback.onSuccess()
+            } else {
+                iLoginCallback.onFailure()
+            }
         }
+
     }
 
 
@@ -66,8 +63,15 @@ class FirebaseOperations {
             }
     }
 
-    fun recoverPassword(email: String) {
-//        TODO: Implement password recovering
+    fun recoverPassword(email: String, callback: ILoginCallback) {
+        firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener() { task ->
+            if (task.isSuccessful) {
+                callback.onSuccess()
+            }
+            else {
+                callback.onFailure()
+            }
+        }
     }
 
     fun currentUser() = firebaseAuth.currentUser
