@@ -47,6 +47,6 @@ class PasswordRecoveryViewModel : ViewModel(), ILoginCallback {
 
     override fun onFailure() {
         Log.i(TAG, "onFailure()")
-        toastMsg.value = ToastEvent.ForgotPassError.event
+        toastMsg.value = ToastEvent.WrongEmail.event
     }
 }

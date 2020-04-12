@@ -27,7 +27,7 @@ class PasswordRecoveryView : Fragment() {
 
     private lateinit var viewModel: PasswordRecoveryViewModel
     private lateinit var binding: FragmentPassRecoveryBinding
-    var navController: NavController? = null
+    private var navController: NavController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,14 +51,14 @@ class PasswordRecoveryView : Fragment() {
         viewModel.toastMsg.observe(viewLifecycleOwner, toastMsgObserver)
     }
 
-    val naviObserver = Observer<String> { newNavi ->
+    private val naviObserver = Observer<String> { newNavi ->
         Log.d(TAG, "Observer called")
         when(newNavi!!) {
             NaviEvent.Authorization.event ->
                 navController!!.navigate(R.id.action_passwordRecoveryView_to_navi_graph)
         }
     }
-    val toastMsgObserver = Observer<String> { msg ->
+    private val toastMsgObserver = Observer<String> { msg ->
         Log.d(TAG, "Toast msg observer called")
         Toast.makeText(activity, msg, Toast.LENGTH_LONG).show()
     }
