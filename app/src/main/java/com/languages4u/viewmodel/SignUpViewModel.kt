@@ -41,15 +41,23 @@ class SignUpViewModel : ViewModel(), ILoginCallback {
 
     fun onSignUpClick() {
         Log.i(TAG, "onSignUpClick()")
-        if (password.value == null) {
-            Log.i(TAG, "Password = null")
-            toastMsg.value = ToastEvent.WrongPassword.event
-        } else if (password.value != repeatPassword.value) {
-            Log.i(TAG, "Passwords do not match")
-            toastMsg.value = ToastEvent.PassNotMatch.event
+        if (email.value.isNullOrBlank()) {
+            Log.i(TAG, "Empty email")
+            toastMsg.value = ToastEvent.EmptyEmail.event
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.value).matches()) {
+            Log.i(TAG, "Wrong email")
+            toastMsg.value = ToastEvent.EmailInvalid.event
         } else {
-            Log.i(TAG, "firebase.login")
-            firebase.register(email.value!!, password.value!!, this)
+            if (password.value.isNullOrBlank()) {
+                Log.i(TAG, "Password empty")
+                toastMsg.value = ToastEvent.EmptyPassword.event
+            } else if (password.value != repeatPassword.value) {
+                Log.i(TAG, "Passwords do not match")
+                toastMsg.value = ToastEvent.PassNotMatch.event
+            } else {
+                Log.i(TAG, "firebase.login")
+                firebase.register(email.value!!, password.value!!, this)
+            }
         }
     }
 

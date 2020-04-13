@@ -8,5 +8,8 @@ enum class ToastEvent(val event : String) {
     EmptyEmail("Please enter an email address"),
     EmptyPassword("Please enter a password"),
     EmailInvalid("Please enter a valid email address"),
-    ResetPasswordSuccess("An email with instructions was send to your address")
+    ResetPasswordSuccess("An email with instructions was send to your address"),
+    FacebookSignInError("Sign in with credentials failed"),
+    SignInCancelled("Sign in cancelled"),
+    SignInFail("Sign in failed")
 }

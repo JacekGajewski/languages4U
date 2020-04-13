@@ -27,6 +27,7 @@ import com.languages4u.R
 import com.languages4u.auth.ILoginCallback
 import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
+import com.languages4u.data.ToastEvent
 import com.languages4u.databinding.FragmentAuthBinding
 import com.languages4u.viewmodel.AuthViewModel
 import kotlinx.android.synthetic.main.fragment_auth.*
@@ -108,10 +109,12 @@ class AuthView : Fragment() {
 
             override fun onCancel() {
                 Log.d(TAG, "facebook:onCancel")
+                showToast(ToastEvent.SignInCancelled.event)
             }
 
-            override fun onError(error: FacebookException) {
-                Log.d(TAG, "facebook:onError", error)
+            override fun onError(exception: FacebookException) {
+                Log.d(TAG, "facebook:onError", exception)
+                showToast(exception.message)
             }
         })
     }
@@ -123,10 +126,10 @@ class AuthView : Fragment() {
         auth.signInWithCredential(credential).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Log.d(TAG, "signInWithCredential:success")
-                val user = auth.currentUser
                 navController!!.navigate(R.id.action_authView_to_menuView)
             } else {
                 Log.d(TAG, "signInWithCredential:error")
+                showToast(ToastEvent.FacebookSignInError.event)
             }
         }
     }
@@ -137,7 +140,7 @@ class AuthView : Fragment() {
             .requestEmail()
             .build()
 
-        val mGoogleSignInClient = GoogleSignIn.getClient(activity!!, gso)
+        val mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
         val signInIntent = mGoogleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
@@ -161,7 +164,9 @@ class AuthView : Fragment() {
 
                 override fun onFailure(exception: Exception?) {
                     Log.e(TAG, "Google iLoginCallback onFailure()")
-
+                    if (exception != null) {
+                        showToast(exception.message)
+                    }
                 }
             }
 
@@ -172,10 +177,14 @@ class AuthView : Fragment() {
                 firebase.firebaseAuthWithGoogle(account!!, iLoginCallback)
             } catch (e: ApiException) {
                 Log.e(TAG, "Google sign in failed", e)
-                Toast.makeText(activity, "Log in fail", Toast.LENGTH_SHORT).show()
+                showToast(ToastEvent.SignInFail.event)
             }
         } else { // FACEBOOK
             fbCallbackManager.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    private fun showToast(message: String?) {
+        Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
     }
 }
