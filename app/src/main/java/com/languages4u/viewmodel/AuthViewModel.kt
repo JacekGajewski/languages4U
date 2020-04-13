@@ -21,28 +21,28 @@ class AuthViewModel : ViewModel(), ILoginCallback {
         SingleLiveEvent<String>() //SingleLiveEvent
     }
 
-    fun onLoginClick(view : View) {
+    fun onLoginClick() {
         Log.i(TAG, "onLoginClick()")
         navigatePage.value = NaviEvent.SignIn.event
     }
 
-    fun onSingUpClick(view : View) {
+    fun onSingUpClick() {
         navigatePage.value = NaviEvent.SingUp.event
     }
 
-    fun onLoginAnonymClick(view : View) {
+    fun onLoginAnonymClick() {
         firebase.loginAnonymously(this)
     }
 
-    fun onPassRestoreClick(view : View) {
+    fun onPassRestoreClick() {
         navigatePage.value = NaviEvent.ForgotPass.event
     }
 
-    fun onLoginFacebookClick(view : View) {
+    fun onLoginFacebookClick() {
         navigatePage.value = NaviEvent.FacebookSingIn.event
     }
 
-    fun onLoginGoogleClick(view : View) {
+    fun onLoginGoogleClick() {
         navigatePage.value = NaviEvent.GoogleSingIn.event
     }
 

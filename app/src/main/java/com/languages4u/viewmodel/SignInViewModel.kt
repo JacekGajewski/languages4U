@@ -35,7 +35,7 @@ class SignInViewModel : ViewModel(), ILoginCallback {
     }
 
 
-    fun onLoginClick(view: View) {
+    fun onLoginClick() {
         if (email.value.isNullOrBlank()) {
             Log.i(TAG, "Empty email")
             toastMsg.value = ToastEvent.EmptyEmail.event
@@ -52,11 +52,11 @@ class SignInViewModel : ViewModel(), ILoginCallback {
         }
     }
 
-    fun onLoginAnonymClick(view: View) {
+    fun onLoginAnonymClick() {
         firebase.loginAnonymously(this)
     }
 
-    fun onForgotPasswordClick(view: View) {
+    fun onForgotPasswordClick() {
         navigatePage.value = NaviEvent.ForgotPass.event
     }
 

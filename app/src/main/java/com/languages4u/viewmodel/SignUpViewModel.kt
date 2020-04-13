@@ -39,7 +39,7 @@ class SignUpViewModel : ViewModel(), ILoginCallback {
         MutableLiveData<String>()
     }
 
-    fun onSignUpClick(view : View) {
+    fun onSignUpClick() {
         Log.i(TAG, "onSignUpClick()")
         if (password.value == null) {
             Log.i(TAG, "Password = null")
@@ -53,7 +53,7 @@ class SignUpViewModel : ViewModel(), ILoginCallback {
         }
     }
 
-    fun onLoginAnnonymClick(view : View) {
+    fun onLoginAnnonymClick() {
         Log.i(TAG, "onLoginAnnonymClick()")
         firebase.loginAnonymously(this)
     }
