@@ -117,7 +117,7 @@
             app:layout_constraintVertical_bias="0.12">
 
             <TextView
-                android:onClick="@{(v) -> SignUpViewModel.onSignUpClick(v)}"
+                android:onClick="@{() -> SignUpViewModel.onSignUpClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -129,7 +129,7 @@
 
         <TextView
             android:id="@+id/text_signup_anonymously"
-            android:onClick="@{(v) -> SignUpViewModel.onLoginAnnonymClick(v)}"
+            android:onClick="@{() -> SignUpViewModel.onLoginAnnonymClick()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_anonymously"

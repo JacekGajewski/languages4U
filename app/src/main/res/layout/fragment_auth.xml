@@ -60,7 +60,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:background="@android:color/transparent"
-                android:onClick="@{(v) -> AuthViewModel.onLoginFacebookClick(v)}"
+                android:onClick="@{() -> AuthViewModel.onLoginFacebookClick()}"
                 android:paddingTop="30dp"/>
 
             <RelativeLayout
@@ -104,7 +104,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="@{(v) -> AuthViewModel.onLoginGoogleClick(v)}">
+                android:onClick="@{() -> AuthViewModel.onLoginGoogleClick()}">
 
                 <ImageView
                     android:layout_width="50dp"
@@ -139,10 +139,11 @@
             app:layout_constraintVertical_bias="0.12">
 
             <Button
+                android:id="@+id/login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:onClick="@{(v) -> AuthViewModel.onLoginClick(v)}"
+                android:onClick="@{() -> AuthViewModel.onLoginClick()}"
                 android:text="Log In"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -165,7 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:onClick="@{(v) -> AuthViewModel.onSingUpClick(v)}"
+                android:onClick="@{() -> AuthViewModel.onSingUpClick()}"
                 android:text="Sign Up"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -176,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login anonymously"
-            android:onClick="@{(v) -> AuthViewModel.onLoginAnonymClick(v)}"
+            android:onClick="@{() -> AuthViewModel.onLoginAnonymClick()}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -189,7 +190,7 @@
             android:id="@+id/text_main_forgotpassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{(v) -> AuthViewModel.onPassRestoreClick(v)}"
+            android:onClick="@{() -> AuthViewModel.onPassRestoreClick()}"
             android:text="Forgot your password?"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
