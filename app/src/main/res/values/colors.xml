@@ -8,6 +8,7 @@
     <color name="white">#ffffff</color>
     <color name="smoke">#f5f5f5</color>
     <color name="black">#000</color>
+    <color name="gray">#333333</color>
     <color name="buttonColor">#AA9020</color>
     <color name="smallButtonColor">#6160E0</color>
     <color name="questionCanvasColor">#6160E0</color>
