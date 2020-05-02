@@ -6,14 +6,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.languages4u.auth.ILoginCallback
 
-class FirebaseOperations {
+open class FirebaseOperations : DataOperations {
     private val TAG = "FirebaseOperations"
 
     val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
 
-    fun login(email: String, password: String, iLoginCallback: ILoginCallback) {
+    override fun login(email: String, password: String, iLoginCallback: ILoginCallback) {
         Log.i(TAG, "login()")
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -25,8 +25,7 @@ class FirebaseOperations {
 
     }
 
-
-    fun register(email: String, password: String, iLoginCallback: ILoginCallback) {
+    override fun register(email: String, password: String, iLoginCallback: ILoginCallback) {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 iLoginCallback.onSuccess()
@@ -36,7 +35,7 @@ class FirebaseOperations {
         }
     }
 
-    fun loginAnonymously(iLoginCallback: ILoginCallback) {
+    override fun loginAnonymously(iLoginCallback: ILoginCallback) {
         firebaseAuth.signInAnonymously().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 iLoginCallback.onSuccess()
@@ -46,7 +45,7 @@ class FirebaseOperations {
         }
     }
 
-    fun firebaseAuthWithGoogle(account: GoogleSignInAccount, iLoginCallback: ILoginCallback) {
+    override fun firebaseAuthWithGoogle(account: GoogleSignInAccount, iLoginCallback: ILoginCallback) {
         Log.i(TAG, "firebaseAuthWithGoogle:" + account.id!!)
 
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
@@ -63,7 +62,7 @@ class FirebaseOperations {
             }
     }
 
-    fun recoverPassword(email: String, callback: ILoginCallback) {
+    override fun recoverPassword(email: String, callback: ILoginCallback) {
         firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener() { task ->
             if (task.isSuccessful) {
                 callback.onSuccess()
@@ -75,8 +74,8 @@ class FirebaseOperations {
         }
     }
 
-    fun currentUser() = firebaseAuth.currentUser
-    fun logout() = firebaseAuth.signOut()
+    override fun currentUser() = firebaseAuth.currentUser
+    override fun logout() = firebaseAuth.signOut()
 
     companion object {
         val instance = FirebaseOperations()
