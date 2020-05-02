@@ -11,6 +11,7 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
+import kotlin.Exception
 
 
 class SignUpViewModelTest {
@@ -96,5 +97,13 @@ class SignUpViewModelTest {
         signUpViewModel.firebase = firebase
         signUpViewModel.onSuccess()
         assert(signUpViewModel.navigatePage.value == NaviEvent.MenuPage.event)
+    }
+
+    @Test
+    fun test_onFailure() {
+        val msg = "exceptionmsg"
+        val exception = Exception(msg)
+        signUpViewModel.onFailure(exception)
+        assert(signUpViewModel.toastMsg.value == msg)
     }
 }
