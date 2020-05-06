@@ -20,7 +20,7 @@
             app:destination="@id/signUpView" />
         <action
             android:id="@+id/action_authView_to_menuView"
-            app:destination="@id/menuView" />
+            app:destination="@id/startView" />
     </fragment>
     <fragment
         android:id="@+id/signUpView"
@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpView_to_menuView"
-            app:destination="@id/menuView"
+            app:destination="@id/startView"
             app:popUpTo="@id/authView" />
     </fragment>
     <fragment
@@ -39,7 +39,7 @@
         tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_signInView_to_menuView"
-            app:destination="@id/menuView"
+            app:destination="@id/startView"
             app:popUpTo="@id/authView"
             app:popUpToInclusive="true" />
         <action
