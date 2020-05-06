@@ -66,6 +66,9 @@
         <action
             android:id="@+id/action_menuView_to_chooseQuizView"
             app:destination="@id/chooseQuizView" />
+        <action
+            android:id="@+id/action_menuView_to_startView"
+            app:destination="@id/startView" />
     </fragment>
     <fragment
         android:id="@+id/addQuizView"
@@ -94,4 +97,93 @@
         android:id="@+id/questionView"
         android:name="com.languages4u.view.QuestionView"
         android:label="QuestionView" />
+    <fragment
+        android:id="@+id/detailsView"
+        android:name="com.languages4u.view.quiz.DetailsView"
+        android:label="DetailsView"
+        tools:layout="@layout/fragment_details_view">
+        <action
+            android:id="@+id/action_detailsView_to_quizView"
+            app:destination="@id/quizView"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_down"/>
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizView"
+        android:name="com.languages4u.view.quiz.QuizView"
+        android:label="QuizView"
+        tools:layout="@layout/fragment_details_view">
+        <action
+            android:id="@+id/action_quizView_to_resultView"
+            app:destination="@id/resultView"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popUpTo="@id/quizView"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="quizId"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="totalQuestions"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="quizName"
+            app:argType="string"
+            android:defaultValue="null" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/listView"
+        android:name="com.languages4u.view.quiz.ListView"
+        android:label="ListView"
+        tools:layout="@layout/fragment_list_view">
+        <action
+            android:id="@+id/action_listView_to_detailsView"
+            app:destination="@id/detailsView"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultView"
+        android:name="com.languages4u.view.quiz.ResultView"
+        android:label="ResultView"
+        tools:layout="@layout/fragment_result_view">
+        <argument
+            android:name="quizId"
+            app:argType="string"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_resultView_to_listView"
+            app:destination="@id/listView" />
+        <argument
+            android:name="correctNum"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="wrongNum"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/startView"
+        android:name="com.languages4u.view.quiz.StartView"
+        android:label="StartView"
+        tools:layout="@layout/fragment_start_view">
+        <action
+            android:id="@+id/action_startView_to_listView"
+            app:destination="@id/listView" />
+    </fragment>
+
 </navigation>
