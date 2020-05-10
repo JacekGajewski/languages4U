@@ -94,4 +94,8 @@
         android:id="@+id/questionView"
         android:name="com.languages4u.view.QuestionView"
         android:label="QuestionView" />
+    <fragment
+        android:id="@+id/userProfileView"
+        android:name="com.languages4u.view.UserProfileView"
+        android:label="UserProfileView" />
 </navigation>

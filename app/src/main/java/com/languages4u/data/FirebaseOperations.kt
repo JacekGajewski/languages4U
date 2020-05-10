@@ -8,6 +8,7 @@ import com.languages4u.auth.ILoginCallback
 
 open class FirebaseOperations : DataOperations {
     private val TAG = "FirebaseOperations"
+    lateinit var listener: OnUserStateChangeListener
 
     val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
@@ -17,6 +18,7 @@ open class FirebaseOperations : DataOperations {
         Log.i(TAG, "login()")
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                listener.onUserStateChangeListener(email, "Nick")
                 iLoginCallback.onSuccess()
             } else {
                 iLoginCallback.onFailure(task.exception)
@@ -38,6 +40,7 @@ open class FirebaseOperations : DataOperations {
     override fun loginAnonymously(iLoginCallback: ILoginCallback) {
         firebaseAuth.signInAnonymously().addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                listener.onUserStateChangeListener("", "Anonymous User")
                 iLoginCallback.onSuccess()
             } else {
                 iLoginCallback.onFailure(task.exception)
@@ -76,6 +79,10 @@ open class FirebaseOperations : DataOperations {
 
     override fun currentUser() = firebaseAuth.currentUser
     override fun logout() = firebaseAuth.signOut()
+
+    override fun registerListener(listener: OnUserStateChangeListener) {
+        this.listener = listener
+    }
 
     companion object {
         val instance = FirebaseOperations()

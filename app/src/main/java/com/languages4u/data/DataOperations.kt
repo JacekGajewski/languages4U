@@ -12,4 +12,6 @@ interface DataOperations {
     fun recoverPassword(email: String, callback: ILoginCallback)
     fun currentUser() : FirebaseUser?
     fun logout()
+
+    fun registerListener(listener : OnUserStateChangeListener)
 }
