@@ -3,7 +3,6 @@ package com.languages4u.viewmodel.quiz
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.languages4u.repository.FirebaseRepository
-import com.languages4u.tools.SingleLiveEvent
 import com.languages4u.view.quiz.QuizListModel
 
 class QuizListViewModel() : ViewModel(), FirebaseRepository.OnFirestoreTaskComplete {
@@ -15,7 +14,7 @@ class QuizListViewModel() : ViewModel(), FirebaseRepository.OnFirestoreTaskCompl
     var firebaseRepository : FirebaseRepository = FirebaseRepository(this)
 
     init {
-        firebaseRepository.getQuizData()
+        firebaseRepository.getQuizListData()
     }
 
     override fun quizListDataAdded(quizListModelsList: List<QuizListModel>) {
