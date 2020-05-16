@@ -4,16 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.languages4u.R
+import com.languages4u.data.NaviEvent
+import com.languages4u.databinding.FragmentDetailsViewBinding
+import com.languages4u.databinding.FragmentResultViewBinding
+import com.languages4u.viewmodel.quiz.DetailsViewModel
+import com.languages4u.viewmodel.quiz.ResultViewModel
 import kotlinx.android.synthetic.main.fragment_result_view.*
 
 class ResultView : Fragment() {
 
+    private val TAG = "ResultView"
+
+    private lateinit var viewModel: ResultViewModel
+    private lateinit var binding: FragmentResultViewBinding
     private var navController: NavController? = null
 
     private lateinit var firebaseAuth: FirebaseAuth
@@ -30,7 +42,12 @@ class ResultView : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_result_view, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_result_view, container, false)
+        viewModel = ViewModelProviders.of(this).get(ResultViewModel::class.java)
+        binding.resultViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,41 +71,30 @@ class ResultView : Fragment() {
             navController!!.navigate(R.id.action_resultView_to_listView)
         }
 
-        results_correct_text.text = correctAnswers.toString()
-        results_wrong_text.text = wrongAnswers.toString()
-        results_missed_text.text = ""
+        viewModel.correctAnswers.value = correctAnswers.toString()
+        viewModel.wrongAnswers.value = wrongAnswers.toString()
+//        TODO
+        viewModel.questionsMissed.value = "0"
 
         val total = correctAnswers + wrongAnswers
 
-        if (total != 0){
-            val percent = (correctAnswers * 100)/total
+        if (total != 0) {
+            val percent = (correctAnswers * 100) / total
 
-            results_percent.text = "$percent%"
-            results_progress.progress = percent
+            viewModel.resultPercent.value = "$percent%"
+            viewModel.progressBar.value = percent
         }
+    }
 
-//        firebaseFirestore.collection("quiz-list")
-//            .document(quizId!!)
-//            .collection("Results")
-//            .document(userId)
-//            .get()
-//            .addOnCompleteListener {task ->
-//                if (task.isSuccessful) {
-//                    var result = task.result
-//
-//                    val correct : Long? = result!!.getLong("Correct")
-//                    results_correct_text.text = correct!!.toString()
-//                    val wrong : Long? = result.getLong("Wrong")
-//                    results_wrong_text.text = wrong!!.toString()
-//                    results_missed_text.text = ""
-//
-//                    var total : Long = correct + wrong
-//                    var procent = (correct * 100)/total
-//
-//                    results_percent.text = "$procent%"
-//                    results_progress.progress = procent.toInt()
-//                }
-//            }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.navigatePage.observe(viewLifecycleOwner, naviObserver)
+    }
 
+    private val naviObserver = Observer<String> { newNavi ->
+        when (newNavi!!) {
+            NaviEvent.HomePage.event -> navController!!.navigate(R.id.action_resultView_to_listView)
+
+        }
     }
 }

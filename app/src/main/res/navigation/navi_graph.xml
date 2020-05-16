@@ -185,5 +185,9 @@
             android:id="@+id/action_startView_to_listView"
             app:destination="@id/listView" />
     </fragment>
+    <fragment
+        android:id="@+id/userProfileView"
+        android:name="com.languages4u.view.UserProfileView"
+        android:label="UserProfileView" />
 
 </navigation>
