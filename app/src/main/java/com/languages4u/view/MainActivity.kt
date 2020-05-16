@@ -33,11 +33,11 @@ class MainActivity : AppCompatActivity() {
     private fun bottomNavBarVisibility() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.listView -> bottom_nav_bar.visibility = View.VISIBLE
-                R.id.menuView -> bottom_nav_bar.visibility = View.VISIBLE
-                R.id.chooseQuizView -> bottom_nav_bar.visibility = View.VISIBLE
-                R.id.authView -> bottom_nav_bar.visibility = View.GONE
-                R.id.detailsView -> bottom_nav_bar.visibility = View.GONE
+//                R.id.listView -> bottom_nav_bar.visibility = View.VISIBLE
+//                R.id.menuView -> bottom_nav_bar.visibility = View.VISIBLE
+//                R.id.chooseQuizView -> bottom_nav_bar.visibility = View.VISIBLE
+//                R.id.authView -> bottom_nav_bar.visibility = View.GONE
+//                R.id.detailsView -> bottom_nav_bar.visibility = View.GONE
             }
         }
 

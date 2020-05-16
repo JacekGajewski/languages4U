@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="AuthViewModel"
@@ -8,199 +10,182 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/auth_bckg"
         tools:context=".view.MainActivity">
 
-        <TextView
-            android:id="@+id/text_authorization_app_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="42sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.265" />
-
-        <EditText
-            android:id="@+id/edit_authorization_help"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:background="#00000000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_authorization_app_name"
-            app:layout_constraintVertical_bias="0.21" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_authorization_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            app:cardBackgroundColor="#425C8D"
-            app:cardElevation="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_authorization_help"
-            app:layout_constraintVertical_bias="0.052">
-            <!--0.357-->
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.68">
+
+            <!--                android:translationZ="90dp" />-->
 
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/login_button_facebook"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal"
                 android:background="@android:color/transparent"
                 android:onClick="@{() -> AuthViewModel.onLoginFacebookClick()}"
-                android:paddingTop="30dp"/>
+                android:paddingTop="30dp"
+                android:translationZ="0dp"
+                app:com_facebook_login_text="" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#425C8D">
+            <TextView
+                android:id="@+id/login_button_facebook2"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/facebook_button"
+                android:gravity="center|center"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/loguj_fb"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:com_facebook_login_text="@string/loguj_fb"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.488"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.665" />
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_facebook" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:text="Facebook"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_authorization_google"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            app:cardBackgroundColor="#008CDE"
-            app:cardElevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_authorization_facebook"
-            app:layout_constraintVertical_bias="0.085">
+<!--        <com.facebook.login.widget.LoginButton-->
+<!--            android:id="@+id/login_button_facebook"-->
+<!--            style="?android:attr/borderlessButtonStyle"-->
+<!--            android:layout_width="325dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:background="@drawable/tlo_btn"-->
+<!--            android:gravity="center|center"-->
+<!--            android:onClick="@{() -> AuthViewModel.onLoginFacebookClick()}"-->
+<!--            android:paddingStart="0dp"-->
+<!--            android:paddingEnd="0dp"-->
+<!--            android:text="@string/loguj_fb"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:com_facebook_login_text="@string/loguj_fb"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.488"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.665" />-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:onClick="@{() -> AuthViewModel.onLoginGoogleClick()}">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="4dp"
-                    android:src="@drawable/ic_google" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Google"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_authorization_login"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            app:cardBackgroundColor="#99000000"
-            app:cardElevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/card_authorization_signup"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_authorization_google"
-            app:layout_constraintVertical_bias="0.12">
-
-            <Button
-                android:id="@+id/login_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:onClick="@{() -> AuthViewModel.onLoginClick()}"
-                android:text="Log In"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_authorization_signup"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="32dp"
-            app:cardBackgroundColor="#99000000"
-            app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/card_authorization_login"
-            app:layout_constraintTop_toTopOf="@+id/card_authorization_login">
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:onClick="@{() -> AuthViewModel.onSingUpClick()}"
-                android:text="Sign Up"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/text_authorization_anonymously"
+        <Button
+            android:id="@+id/btn_zarejestruj"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login anonymously"
+            android:background="@drawable/button_start"
+            android:gravity="center"
+            android:onClick="@{() -> AuthViewModel.onSingUpClick()}"
+            android:text="@string/zarejestruj"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.802"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.913" />
+
+        <TextView
+            android:id="@+id/txt_masz_konto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/masz_konto"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_zaloguj"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.99" />
+
+        <TextView
+            android:id="@+id/txt_dolacz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dolacz"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_zarejestruj"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.777"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.99" />
+
+        <Button
+            android:id="@+id/btn_zaloguj"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_start"
+            android:gravity="center"
+            android:onClick="@{() -> AuthViewModel.onLoginClick()}"
+            android:text="@string/zaloguj"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.913" />
+
+        <Button
+            android:id="@+id/login_button_google"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/google_login"
+            android:gravity="center|center"
+            android:onClick="@{() -> AuthViewModel.onLoginGoogleClick()}"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:text="@string/loguj_google"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.77" />
+
+        <TextView
+            android:id="@+id/btn_authorization_anonymously"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="335dp"
+            android:layout_height="39dp"
             android:onClick="@{() -> AuthViewModel.onLoginAnonymClick()}"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_authorization_login"
+            android:text="@string/anonimowo"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.15"/>
-
-        <TextView
-            android:id="@+id/text_main_forgotpassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> AuthViewModel.onPassRestoreClick()}"
-            android:text="Forgot your password?"
-            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.1"
-            app:layout_constraintTop_toBottomOf="@+id/text_authorization_anonymously"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.97" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>

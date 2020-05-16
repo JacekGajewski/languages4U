@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="false"
         android:animationCache="false"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/buttonColor"
         android:visibility="gone"
         app:itemIconTint="@color/colorPrimary"
         app:itemTextColor="@color/colorPrimary"

@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">Languages4U</string>
+    <string name="app_name">languages4U</string>
 
     <!--Authorization-->
     <string name="e_mail">E-mail</string>
-    <string name="password">Password</string>
-    <string name="repeat_password">Repeat password</string>
+    <string name="password">Hasło</string>
+    <string name="repeat_password">Powtórz hasło</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="login_anonymously">Login anonymously</string>
-    <string name="sign_up">Sign up</string>
+    <string name="sign_up">ZAREJESTRUJ</string>
     <string name="log_in">Login</string>
-    <string name="reset_password">Reset password</string>
-    <string name="reset_password_instructions">Enter your registration email to receive password reset instructions.</string>
-    <string name="save_button">save</string>
+    <string name="reset_password">Odzyskaj hasło</string>
+    <string name="reset_password_instructions">Wprowadź swój mail, aby uzyskać instrukcję odzykania hasła.</string>
+    <string name="save_button">ZAPISZ PYTANIE</string>
 
     <!--Facebook Authentication-->
     <string name="facebook_app_id">3086817214684483</string>
@@ -19,4 +19,18 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loguj_fb">FACEBOOK</string>
+    <string name="loguj_google">GOOGLE</string>
+    <string name="masz_konto">Masz już konto?</string>
+    <string name="dolacz">Dołącz do nas!</string>
+    <string name="zaloguj">ZALOGUJ SIĘ</string>
+    <string name="zarejestruj">ZAREJESTRUJ SIĘ</string>
+    <string name="anonimowo">Pozwól mi sprawdzić aplikację anonimowo</string>
+    <string name="loguj">ZALOGUJ</string>
+    <string name="zapomnialem_hasla">"Zapomniałeś hasła? KLIKNIJ"</string>
+    <string name="poznawaj_jezyki">BAW SIĘ Z NAMI</string>
+    <string name="ladowanie">ŁADOWANIE…</string>
+    <string name="dalej">DALEJ</string>
+    <string name="pytanie">Pytanie</string>
+
 </resources>
