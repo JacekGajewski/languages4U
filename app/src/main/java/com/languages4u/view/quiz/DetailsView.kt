@@ -1,36 +1,54 @@
 package com.languages4u.view.quiz
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.languages4u.R
+import com.languages4u.data.NaviEvent
+import com.languages4u.databinding.FragmentDetailsViewBinding
+import com.languages4u.databinding.FragmentDetailsViewBindingImpl
+import com.languages4u.databinding.FragmentPassRecoveryBinding
+import com.languages4u.viewmodel.PasswordRecoveryViewModel
+import com.languages4u.viewmodel.quiz.DetailsViewModel
 import com.languages4u.viewmodel.quiz.QuizListViewModel
 import kotlinx.android.synthetic.main.fragment_details_view.*
 
-class DetailsView : Fragment(), View.OnClickListener {
+class DetailsView : Fragment() {
 
+    private val TAG = "DetailsView"
+
+    private lateinit var viewModel: DetailsViewModel
+    private lateinit var binding: FragmentDetailsViewBinding
     lateinit var navController: NavController
-    lateinit var quizListViewModel : QuizListViewModel
+    lateinit var quizListViewModel: QuizListViewModel
 
-//    Quiz details
-    private var quizId : String? = null
-    private var quizName : String? = null
-    private var position : Int? = null
-    private var totalQuestions : Long = 0
+    //    Quiz details
+    private var quizId: String? = null
+    private var quizName: String? = null
+    private var position: Int? = null
+    private var totalQuestions: Long = 0
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_details_view, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_details_view, container, false)
+        viewModel = ViewModelProviders.of(this).get(DetailsViewModel::class.java)
+        binding.detailsViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,13 +57,12 @@ class DetailsView : Fragment(), View.OnClickListener {
 
 //        Get the position of the Quiz in RecyclerView
         position = arguments?.getInt("position")
-
-        details_start_btn.setOnClickListener(this)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         quizListViewModel = ViewModelProvider(this).get(QuizListViewModel::class.java)
+        viewModel.navigatePage.observe(viewLifecycleOwner, naviObserver)
 
 //        Load details of the Quiz
         quizListViewModel.quizListModel.observe(viewLifecycleOwner, Observer { quiz ->
@@ -57,10 +74,13 @@ class DetailsView : Fragment(), View.OnClickListener {
                     .into(details_image)
 
 //                Populate the View
-                details_title.text = quiz[position!!].name
-                details_desc.text = quiz[position!!].desc
-                details_difficulty_text.text = quiz[position!!].level
-                details_questions_text.text = quiz[position!!].questions.toString()
+                viewModel.title.value = quiz[position!!].name
+                viewModel.description.value = quiz[position!!].desc
+                viewModel.difficulty.value = quiz[position!!].level
+                viewModel.numberOfQuestions.value = quiz[position!!].questions.toString()
+
+//                TODO
+                viewModel.lastScore.value = "N/A"
 
                 quizId = quiz[position!!].quizid
                 totalQuestions = quiz[position!!].questions
@@ -69,12 +89,17 @@ class DetailsView : Fragment(), View.OnClickListener {
         })
     }
 
-    override fun onClick(v: View?) {
-        when(v!!.id) {
-            details_start_btn.id -> {
-                val action = DetailsViewDirections.actionDetailsViewToQuizView(quizId!!, totalQuestions, quizName!!)
+    private val naviObserver = Observer<String> { newNavi ->
+        when (newNavi!!) {
+            NaviEvent.StartQuizPage.event -> {
+                val action = DetailsViewDirections.actionDetailsViewToQuizView(
+                    quizId!!,
+                    totalQuestions,
+                    quizName!!
+                )
                 navController.navigate(action)
             }
+
         }
     }
 }
