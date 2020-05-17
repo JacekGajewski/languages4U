@@ -47,41 +47,33 @@ class FirebaseRepository : IFirebaseRepository {
         )
 
         var quizId = ""
-        var errFlag = false
-
 
         quizAddRef
             .add(quiz_json)
             .addOnSuccessListener { documentReference ->
                 Log.i(TAG, "Quiz added successfully")
                 quizId = documentReference.id
-                errFlag = false
+                for(question in questions) {
+                    val question_json = hashMapOf(
+                        "answer" to question.answer,
+                        "option_a" to question.option_a,
+                        "option_b" to question.option_b,
+                        "option_c" to question.option_c,
+                        "question" to question.question,
+                        "timer" to question.timer
+                    )
+
+                    quizAddRef
+                        .document(quizId)
+                        .collection(mQuestionsCollectionName)
+                        .add(question_json)
+                        .addOnSuccessListener { Log.i(TAG, "Quiz question added successfully") }
+                        .addOnFailureListener { e -> Log.e(TAG, "Error while adding quiz question", e) }
+                }
             }
             .addOnFailureListener { e ->
                 Log.e(TAG, "Error adding quiz", e)
-                errFlag = true
             };
-
-        if(!errFlag) {
-
-            for(question in questions) {
-                val question_json = hashMapOf(
-                    "answer" to question.answer,
-                    "option_a" to question.option_a,
-                    "option_b" to question.option_b,
-                    "option_c" to question.option_c,
-                    "question" to question.question,
-                    "timer" to question.timer
-                )
-
-                quizAddRef
-                    .document(quizId)
-                    .collection(mQuestionsCollectionName)
-                    .add(question_json)
-                    .addOnSuccessListener { Log.i(TAG, "Quiz question added successfully") }
-                    .addOnFailureListener { e -> Log.e(TAG, "Error while adding quiz question", e) }
-            }
-        }
     }
 
     override fun addQuizResult(quizId: String, userId : String, correct: Long, wrong: Long) {

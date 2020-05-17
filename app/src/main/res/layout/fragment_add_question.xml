@@ -6,7 +6,7 @@
     <data>
         <variable
             name="AddQuizViewModel"
-            type="com.languages4u.viewmodel.addquiz.AddQuizViewModel" />
+            type="com.languages4u.viewmodel.quiz.AddQuizViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +33,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:text="Question"
+            android:text="@{AddQuizViewModel.question}"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addquestion_tv_title" />
@@ -46,7 +46,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:text="Answer A"
+            android:text="@{AddQuizViewModel.answerA}"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addqestion_et_question" />
@@ -58,7 +58,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:text="Answer B"
+            android:text="@{AddQuizViewModel.answerB}"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addqestion_et_A" />
@@ -70,7 +70,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:text="Answer C"
+            android:text="@{AddQuizViewModel.answerC}"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addqestion_et_B" />
@@ -100,21 +100,24 @@
                 android:id="@+id/addquestion_rb_A"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:text="Begginer"
+                android:checked="true"
+                android:text="Answer A"
                 android:textColor="@color/colorPrimary" />
 
             <RadioButton
                 android:id="@+id/addquestion_rb_B"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:text="Intermediate"
+                android:onClick="@{(v) -> AddQuizViewModel.onRadioBtnCorrectAnswerClicked(v)}"
+                android:text="Answer B"
                 android:textColor="@color/colorPrimary" />
 
             <RadioButton
                 android:id="@+id/addquestion_rb_C"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:text="Advanced"
+                android:onClick="@{(v) -> AddQuizViewModel.onRadioBtnCorrectAnswerClicked(v)}"
+                android:text="Answer C"
                 android:textColor="@color/colorPrimary" />
         </RadioGroup>
 
@@ -126,9 +129,8 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/primary_btn_bg"
-            android:enabled="@{AddQuizViewModel.saveBtnEnabled}"
             android:fontFamily="@font/work_sans"
-            android:onClick="@{(v) -> AddQuizViewModel.onButtonClicked(v)}"
+            android:onClick="@{v -> AddQuizViewModel.onAddQuestionClicked()}"
             android:text="Add Question"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"

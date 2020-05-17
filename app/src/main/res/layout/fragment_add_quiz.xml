@@ -7,7 +7,7 @@
 
         <variable
             name="AddQuizViewModel"
-            type="com.languages4u.viewmodel.addquiz.AddQuizViewModel" />
+            type="com.languages4u.viewmodel.quiz.AddQuizViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,17 +24,17 @@
             android:layout_marginTop="25dp"
             android:ems="10"
             android:textColor="@color/colorPrimary"
-            android:text="Description"
+            android:text="@{AddQuizViewModel.quizDesc}"
             app:layout_constraintStart_toEndOf="@+id/addquiz_tv_desc"
             app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_name" />
 
         <TextView
             android:id="@+id/addquiz_tv_visibility"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:textColor="@color/colorPrimary"
             android:text="Visibility"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addquiz_rbgroup_difficulty" />
@@ -63,8 +63,7 @@
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
-            android:enabled="@{AddQuizViewModel.saveBtnEnabled}"
-            android:onClick="@{(v) -> AddQuizViewModel.onButtonClicked(v)}"
+            android:onClick="@{v -> AddQuizViewModel.onAddQuizClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -88,7 +87,7 @@
             android:layout_marginTop="25dp"
             android:ems="10"
             android:textColor="@color/colorPrimary"
-            android:text="name"
+            android:text="@{AddQuizViewModel.quizName}"
             app:layout_constraintStart_toEndOf="@+id/addquiz_tv_name"
             app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_title" />
 
@@ -107,7 +106,7 @@
             android:id="@+id/addquiz_rbgroup_visibility"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,24 +116,27 @@
                 android:id="@+id/addquiz_rb_public"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:textColor="@color/colorPrimary"
-                android:text="Public" />
+                android:checked="true"
+                android:onClick="@{(v) -> AddQuizViewModel.onRadioBtnVisibilityClicked(v)}"
+                android:text="Public"
+                android:textColor="@color/colorPrimary" />
 
             <RadioButton
                 android:id="@+id/addquiz_rb_private"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:textColor="@color/colorPrimary"
-                android:text="Private" />
+                android:onClick="@{(v) -> AddQuizViewModel.onRadioBtnVisibilityClicked(v)}"
+                android:text="Private"
+                android:textColor="@color/colorPrimary" />
         </RadioGroup>
 
         <TextView
             android:id="@+id/addquiz_tv_difficulty"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:textColor="@color/colorPrimary"
             android:text="Difficulty"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.481"
             app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +146,7 @@
             android:id="@+id/addquiz_rbgroup_difficulty"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -154,22 +156,26 @@
                 android:id="@+id/addquiz_rb_beginner"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:textColor="@color/colorPrimary"
-                android:text="Begginer" />
+                android:checked="true"
+                android:onClick="@{(v) -> AddQuizViewModel.onRadioBtnDifficultyClicked(v)}"
+                android:text="Begginer"
+                android:textColor="@color/colorPrimary" />
 
             <RadioButton
                 android:id="@+id/addquiz_rb_intermediate"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:textColor="@color/colorPrimary"
-                android:text="Intermediate" />
+                android:onClick="@{(v) -> AddQuizViewModel.onRadioBtnDifficultyClicked(v)}"
+                android:text="Intermediate"
+                android:textColor="@color/colorPrimary" />
 
             <RadioButton
                 android:id="@+id/addquiz_rb_advanced"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:textColor="@color/colorPrimary"
-                android:text="Advanced" />
+                android:onClick="@{(v) -> AddQuizViewModel.onRadioBtnDifficultyClicked(v)}"
+                android:text="Advanced"
+                android:textColor="@color/colorPrimary" />
         </RadioGroup>
 
         <Button
@@ -179,9 +185,8 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/primary_btn_bg"
-            android:enabled="@{AddQuizViewModel.saveBtnEnabled}"
             android:fontFamily="@font/work_sans"
-            android:onClick="@{(v) -> AddQuizViewModel.onButtonClicked(v)}"
+            android:onClick="@{v -> AddQuizViewModel.onAddQuizQuestionClicked()}"
             android:text="Add Question"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"
@@ -207,7 +212,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="25dp"
             android:textColor="@color/colorPrimary"
-            android:text="0"
+            android:text="@{AddQuizViewModel.questionsNumber}"
             app:layout_constraintStart_toEndOf="@+id/addquiz_tv_qno"
             app:layout_constraintTop_toBottomOf="@+id/addquiz_rbgroup_visibility" />
 

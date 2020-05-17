@@ -56,47 +56,17 @@
             app:destination="@id/authView" />
     </fragment>
     <fragment
-        android:id="@+id/menuView"
-        android:name="com.languages4u.view.MenuView"
-        android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" >
+        android:id="@+id/addQuizView"
+        android:name="com.languages4u.view.quiz.AddQuizView"
+        android:label="fragment_add_quiz"
+        tools:layout="@layout/fragment_add_quiz" >
         <action
-            android:id="@+id/action_menuView_to_addQuizView"
-            app:destination="@id/addQuizView" />
+            android:id="@+id/action_addQuizView_to_addQuestionView"
+            app:destination="@id/addQuestionView" />
         <action
-            android:id="@+id/action_menuView_to_chooseQuizView"
-            app:destination="@id/chooseQuizView" />
-        <action
-            android:id="@+id/action_menuView_to_startView"
+            android:id="@+id/action_addQuizView_to_startView"
             app:destination="@id/startView" />
     </fragment>
-    <fragment
-        android:id="@+id/addQuizView"
-        android:name="com.languages4u.view.addquiz.AddQuizView"
-        android:label="fragment_add_quiz"
-        tools:layout="@layout/fragment_add_quiz" />
-    <fragment
-        android:id="@+id/chooseQuizView"
-        android:name="com.languages4u.view.ChooseQuizView"
-        android:label="fragment_choose_quiz"
-        tools:layout="@layout/fragment_choose_quiz" >
-        <action
-            android:id="@+id/action_chooseQuizView_to_playQuizView"
-            app:destination="@id/playQuizView" />
-    </fragment>
-    <fragment
-        android:id="@+id/playQuizView"
-        android:name="com.languages4u.view.PlayQuizView"
-        android:label="fragment_play_quiz"
-        tools:layout="@layout/fragment_play_quiz" >
-        <action
-            android:id="@+id/action_playQuizView_to_questionView"
-            app:destination="@id/questionView" />
-    </fragment>
-    <fragment
-        android:id="@+id/questionView"
-        android:name="com.languages4u.view.QuestionView"
-        android:label="QuestionView" />
     <fragment
         android:id="@+id/detailsView"
         android:name="com.languages4u.view.quiz.DetailsView"
@@ -184,10 +154,23 @@
         <action
             android:id="@+id/action_startView_to_listView"
             app:destination="@id/listView" />
+        <action
+            android:id="@+id/action_startView_to_userProfileView"
+            app:destination="@id/userProfileView" />
     </fragment>
     <fragment
         android:id="@+id/userProfileView"
         android:name="com.languages4u.view.UserProfileView"
-        android:label="UserProfileView" />
+        android:label="UserProfileView"
+        />
+    <fragment
+        android:id="@+id/addQuestionView"
+        android:name="com.languages4u.view.quiz.AddQuestionView"
+        android:label="AddQuestionView"
+        tools:layout="@layout/fragment_add_question">
+        <action
+            android:id="@+id/action_addQuestionView_to_addQuizView"
+            app:destination="@id/addQuizView" />
+    </fragment>
 
 </navigation>
