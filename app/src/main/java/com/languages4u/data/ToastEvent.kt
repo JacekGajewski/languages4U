@@ -11,5 +11,6 @@ enum class ToastEvent(val event : String) {
     ResetPasswordSuccess("An email with instructions was send to your address"),
     FacebookSignInError("Sign in with credentials failed"),
     SignInCancelled("Sign in cancelled"),
-    SignInFail("Sign in failed")
+    SignInFail("Sign in failed"),
+    NoQuestionAdded("Add at least one question")
 }

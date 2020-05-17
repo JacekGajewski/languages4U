@@ -1,4 +1,4 @@
-package com.languages4u.view.quiz
+package com.languages4u.models.quiz
 
 import com.google.firebase.firestore.DocumentId
 

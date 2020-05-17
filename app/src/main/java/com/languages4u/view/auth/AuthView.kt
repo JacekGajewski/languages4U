@@ -1,4 +1,4 @@
-package com.languages4u.view
+package com.languages4u.view.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -29,7 +29,7 @@ import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
 import com.languages4u.data.ToastEvent
 import com.languages4u.databinding.FragmentAuthBinding
-import com.languages4u.viewmodel.AuthViewModel
+import com.languages4u.viewmodel.auth.AuthViewModel
 import kotlinx.android.synthetic.main.fragment_auth.*
 import java.lang.Exception
 

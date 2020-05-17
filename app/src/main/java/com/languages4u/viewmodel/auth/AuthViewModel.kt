@@ -1,4 +1,4 @@
-package com.languages4u.viewmodel
+package com.languages4u.viewmodel.auth
 
 import android.util.Log
 import android.view.View

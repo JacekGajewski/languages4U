@@ -5,7 +5,7 @@
     <data>
         <variable
             name="SingInViewModel"
-            type="com.languages4u.viewmodel.SignInViewModel" />
+            type="com.languages4u.viewmodel.auth.SignInViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

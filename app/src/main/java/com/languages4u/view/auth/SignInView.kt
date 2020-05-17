@@ -1,4 +1,4 @@
-package com.languages4u.view
+package com.languages4u.view.auth
 
 import android.os.Bundle
 import android.util.Log
@@ -14,28 +14,28 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.languages4u.R
 import com.languages4u.data.NaviEvent
-import com.languages4u.databinding.FragmentSignUpBinding
-import com.languages4u.viewmodel.SignUpViewModel
+import com.languages4u.databinding.FragmentSignInBinding
+import com.languages4u.viewmodel.auth.SignInViewModel
 
-class SignUpView : Fragment() {
-    private val TAG = "SignUpView"
+
+class SignInView : Fragment() {
+    private val TAG = "SignInView"
 
     companion object {
-        fun newInstance() = SignUpView()
+        fun newInstance() = SignInView()
     }
 
-    private lateinit var viewModel: SignUpViewModel
-    private lateinit var binding: FragmentSignUpBinding
-    var navController: NavController? = null
-
+    private lateinit var viewModel: SignInViewModel
+    private lateinit var binding: FragmentSignInBinding
+    private var navController: NavController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container, false)
-        viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
-        binding.signUpViewModel = viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_in, container, false)
+        viewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
+        binding.singInViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -51,14 +51,15 @@ class SignUpView : Fragment() {
         viewModel.toastMsg.observe(viewLifecycleOwner, toastMsgObserver)
     }
 
-    val naviObserver = Observer<String> { newNavi ->
+    private val naviObserver = Observer<String> { newNavi ->
         Log.d(TAG, "Observer called")
         when (newNavi!!) {
-            NaviEvent.MenuPage.event -> navController!!.navigate(R.id.action_signUpView_to_menuView)
+            NaviEvent.MenuPage.event -> navController!!.navigate(R.id.action_signInView_to_menuView)
+            NaviEvent.ForgotPass.event -> navController!!.navigate(R.id.action_signInView_to_passwordRecoveryView)
         }
     }
 
-    val toastMsgObserver = Observer<String> { msg ->
+    private val toastMsgObserver = Observer<String> { msg ->
         Log.d(TAG, "Toast msg observer called")
         Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
     }

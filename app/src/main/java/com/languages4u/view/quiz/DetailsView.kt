@@ -1,7 +1,6 @@
 package com.languages4u.view.quiz
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,9 +15,6 @@ import com.bumptech.glide.Glide
 import com.languages4u.R
 import com.languages4u.data.NaviEvent
 import com.languages4u.databinding.FragmentDetailsViewBinding
-import com.languages4u.databinding.FragmentDetailsViewBindingImpl
-import com.languages4u.databinding.FragmentPassRecoveryBinding
-import com.languages4u.viewmodel.PasswordRecoveryViewModel
 import com.languages4u.viewmodel.quiz.DetailsViewModel
 import com.languages4u.viewmodel.quiz.QuizListViewModel
 import kotlinx.android.synthetic.main.fragment_details_view.*

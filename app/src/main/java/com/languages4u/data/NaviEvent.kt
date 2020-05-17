@@ -10,5 +10,7 @@ enum class NaviEvent(val event: String) {
     MenuPage("MENU_PAGE"),
     ChooseQuizPage("CHOOSE_QUIZ"),
     StartQuizPage("START_QUIZ"),
-    HomePage("HOME_PAGE")
+    HomePage("HOME_PAGE"),
+    AddQuiz("ADD_QUIZ"),
+    AddQuestion("ADD_QUESTION")
     }

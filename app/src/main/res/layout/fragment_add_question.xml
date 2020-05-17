@@ -1,109 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_question"
-    android:fitsSystemWindows="true"
-    android:visibility="visible">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO labels, category, etc.
-    -->
+    <data>
+        <variable
+            name="AddQuizViewModel"
+            type="com.languages4u.viewmodel.quiz.AddQuizViewModel" />
+    </data>
 
-    <!-- All text attributes will ref to ViewModel LiveData values like:
-    android:text="@=AddQuestionViewModel.mAnswer_A" -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
 
-    <EditText
-        android:id="@+id/quiz_question"
-        android:layout_width="@dimen/questionEtWidth"
-        android:layout_height="@dimen/questionEtHeight"
-        android:background="@drawable/bg_pytanie"
-        android:hint="Add Question"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.20999998" />
 
-    <EditText
-        android:id="@+id/quiz_option_one"
-        android:layout_width="@dimen/answerBtWidth"
-        android:layout_height="@dimen/answerBtHeight"
-        android:background="@drawable/bg_odpowiedz"
-        android:hint="ADD ANSWER A"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_question"
-        app:layout_constraintVertical_bias="0.100000024" />
+        <TextView
+            android:id="@+id/addquestion_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Add question"
+            android:textSize="30sp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/quiz_option_two"
-        android:layout_width="@dimen/answerBtWidth"
-        android:layout_height="@dimen/answerBtHeight"
-        android:background="@drawable/bg_odpowiedz"
-        android:hint="ADD ANSWER B"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_question"
-        app:layout_constraintVertical_bias="0.100000024" />
+        <EditText
+            android:id="@+id/addqestion_et_question"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:text="@={AddQuizViewModel.question}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquestion_tv_title" />
 
-    <EditText
-        android:id="@+id/quiz_option_three"
-        android:layout_width="@dimen/answerBtWidth"
-        android:layout_height="@dimen/answerBtHeight"
-        android:background="@drawable/bg_odpowiedz"
-        android:hint="ADD ANSWER C"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_option_one"
-        app:layout_constraintVertical_bias="0.100000024" />
 
-    <EditText
-        android:id="@+id/quiz_option_four"
-        android:layout_width="@dimen/answerBtWidth"
-        android:layout_height="@dimen/answerBtHeight"
-        android:background="@drawable/bg_odpowiedz"
-        android:hint="ADD ANSWER D"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_option_two"
-        app:layout_constraintVertical_bias="0.100000024" />
+        <EditText
+            android:id="@+id/addqestion_et_A"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:text="@={AddQuizViewModel.answerA}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addqestion_et_question" />
 
-    <Button
-        android:id="@+id/quiz_next_btn"
-        android:layout_width="@dimen/smallBtWidth"
-        android:layout_height="@dimen/smallBtHeight"
-        android:background="@drawable/button_start"
-        android:text="@string/save_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_option_four" />
+        <EditText
+            android:id="@+id/addqestion_et_B"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:text="@={AddQuizViewModel.answerB}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addqestion_et_A" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/quiz_question"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:srcCompat="@drawable/logo" />
+        <EditText
+            android:id="@+id/addqestion_et_C"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:text="@={AddQuizViewModel.answerC}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addqestion_et_B" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/addquestion_tv_correct"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:text="Correct answer"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addqestion_et_C" />
+
+        <RadioGroup
+            android:id="@+id/addquestion_rbg_correct"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquestion_tv_correct">
+
+            <RadioButton
+                android:id="@+id/addquestion_rb_A"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:checked="true"
+                android:text="Answer A"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/addquestion_rb_B"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:onClick="@{(v) -> AddQuizViewModel.onRadioBtnCorrectAnswerClicked(v)}"
+                android:text="Answer B"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/addquestion_rb_C"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:onClick="@{(v) -> AddQuizViewModel.onRadioBtnCorrectAnswerClicked(v)}"
+                android:text="Answer C"
+                android:textColor="@color/colorPrimary" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/addquestion_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/primary_btn_bg"
+            android:fontFamily="@font/work_sans"
+            android:onClick="@{v -> AddQuizViewModel.onAddQuestionClicked()}"
+            android:text="Add Question"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

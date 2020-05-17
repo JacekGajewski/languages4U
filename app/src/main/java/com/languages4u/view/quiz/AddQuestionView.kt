@@ -1,4 +1,4 @@
-package com.languages4u.view
+package com.languages4u.view.quiz
 
 import android.os.Bundle
 import android.util.Log
@@ -14,28 +14,29 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.languages4u.R
 import com.languages4u.data.NaviEvent
-import com.languages4u.databinding.FragmentSignInBinding
-import com.languages4u.viewmodel.SignInViewModel
+import com.languages4u.databinding.FragmentAddQuestionBinding
+import com.languages4u.viewmodel.quiz.AddQuizViewModel
 
 
-class SignInView : Fragment() {
-    private val TAG = "SignInView"
+class AddQuestionView: Fragment() {
+    private val TAG = "AddQuestionView"
 
     companion object {
-        fun newInstance() = SignInView()
+        fun newInstance() = AddQuestionView()
     }
 
-    private lateinit var viewModel: SignInViewModel
-    private lateinit var binding: FragmentSignInBinding
+    // shared viewmodel (add quiz - add question)
+    private lateinit var viewModel: AddQuizViewModel
+    private lateinit var binding: FragmentAddQuestionBinding
     private var navController: NavController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_in, container, false)
-        viewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
-        binding.singInViewModel = viewModel
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_question, container, false)
+        viewModel = ViewModelProviders.of(activity!!).get(AddQuizViewModel::class.java)
+        binding.addQuizViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -54,8 +55,7 @@ class SignInView : Fragment() {
     private val naviObserver = Observer<String> { newNavi ->
         Log.d(TAG, "Observer called")
         when (newNavi!!) {
-            NaviEvent.MenuPage.event -> navController!!.navigate(R.id.action_signInView_to_menuView)
-            NaviEvent.ForgotPass.event -> navController!!.navigate(R.id.action_signInView_to_passwordRecoveryView)
+            NaviEvent.AddQuiz.event -> navController!!.navigate(R.id.action_addQuestionView_to_addQuizView)
         }
     }
 
