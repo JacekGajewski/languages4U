@@ -1,22 +1,31 @@
 package com.languages4u.repository
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-import com.languages4u.view.quiz.QuizListModel
+import com.languages4u.models.quiz.QuestionModel
+import com.languages4u.models.quiz.QuizListModel
 
-class FirebaseRepository {
+class FirebaseRepository : IFirebaseRepository {
+    val TAG = "FirebaseRepository"
 
-    lateinit var onFirestoreTaskComplete : OnFirestoreTaskComplete
-    var firebaseFirestore = FirebaseFirestore.getInstance()
+    private val mQuizCollectionName = "quiz-list"
+    private val mQuestionsCollectionName = "questions"
+    private val mResultsCollectionName = "Results"
 
-//    Don't load private quiz
-    var quizRef = firebaseFirestore.collection("quiz-list")
-        .whereEqualTo("visibility", "public")
-
-    constructor(onFirestoreTaskComplete: OnFirestoreTaskComplete) {
-        this.onFirestoreTaskComplete = onFirestoreTaskComplete
+    val firebaseFirestore by lazy {
+        FirebaseFirestore.getInstance()
     }
 
-    fun getQuizData() {
+    val quizRef by lazy {
+        firebaseFirestore.collection(mQuizCollectionName)
+            .whereEqualTo("visibility", "public")
+    }
+
+    val quizAddRef by lazy {
+        firebaseFirestore.collection(mQuizCollectionName)
+    }
+
+    override fun getQuizList(onFirestoreTaskComplete: IOnFirestoreTaskComplete) {
         quizRef.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 onFirestoreTaskComplete.quizListDataAdded(task.result!!.toObjects(QuizListModel::class.java))
@@ -26,8 +35,67 @@ class FirebaseRepository {
         }
     }
 
-    interface OnFirestoreTaskComplete {
-        fun quizListDataAdded(quizListModelsList : List<QuizListModel>)
-        fun onError(e : Exception?)
+    override fun addQuiz(quiz: QuizListModel, questions : List<QuestionModel>) {
+
+        val quiz_json = hashMapOf(
+            "desc" to quiz.desc,
+            "image" to quiz.image,
+            "level" to quiz.level,
+            "name" to quiz.name,
+            "questions" to quiz.questions,
+            "visibility" to quiz.visibilty
+        )
+
+        var quizId = ""
+        var errFlag = false
+
+
+        quizAddRef
+            .add(quiz_json)
+            .addOnSuccessListener { documentReference ->
+                Log.i(TAG, "Quiz added successfully")
+                quizId = documentReference.id
+                errFlag = false
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "Error adding quiz", e)
+                errFlag = true
+            };
+
+        if(!errFlag) {
+
+            for(question in questions) {
+                val question_json = hashMapOf(
+                    "answer" to question.answer,
+                    "option_a" to question.option_a,
+                    "option_b" to question.option_b,
+                    "option_c" to question.option_c,
+                    "question" to question.question,
+                    "timer" to question.timer
+                )
+
+                quizAddRef
+                    .document(quizId)
+                    .collection(mQuestionsCollectionName)
+                    .add(question_json)
+                    .addOnSuccessListener { Log.i(TAG, "Quiz question added successfully") }
+                    .addOnFailureListener { e -> Log.e(TAG, "Error while adding quiz question", e) }
+            }
+        }
+    }
+
+    override fun addQuizResult(quizId: String, userId : String, correct: Long, wrong: Long) {
+        val result = hashMapOf(
+            "Correct" to correct,
+            "Wrong" to wrong
+        )
+
+        quizAddRef
+            .document(quizId)
+            .collection(mResultsCollectionName)
+            .document(userId)
+            .set(result)
+            .addOnSuccessListener { Log.i(TAG, "Quiz result added successfully") }
+            .addOnFailureListener { e -> Log.e(TAG, "Error while adding quiz result", e) }
     }
 }

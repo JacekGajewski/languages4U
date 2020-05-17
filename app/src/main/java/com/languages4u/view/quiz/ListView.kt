@@ -15,7 +15,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.languages4u.R
-import com.languages4u.view.quiz.adapter.QuizAdapter
+import com.languages4u.adapter.quiz.QuizAdapter
 import com.languages4u.viewmodel.quiz.QuizListViewModel
 import kotlinx.android.synthetic.main.fragment_list_view.*
 

@@ -1,86 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:visibility="visible">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO labels, category, etc.
-    -->
+    <data>
+        <variable
+            name="AddQuizViewModel"
+            type="com.languages4u.viewmodel.addquiz.AddQuizViewModel" />
+    </data>
 
-    <!-- All text attributes will ref to ViewModel LiveData values like:
-    android:text="@=AddQuestionViewModel.mAnswer_A" -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
 
-    <EditText
-        android:id="@+id/editText_add_question"
-        android:layout_width="@dimen/questionEtWidth"
-        android:layout_height="@dimen/questionEtHeight"
-        android:background="@drawable/edit_question_canvas"
-        android:hint="Add Question"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_save" />
 
-    <EditText
-        android:id="@+id/edittext_answer_a"
-        android:layout_width="@dimen/answerBtWidth"
-        android:layout_height="@dimen/answerBtHeight"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_answer_canvas"
-        android:hint="ADD ANSWER A"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_add_question" />
+        <TextView
+            android:id="@+id/addquestion_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Add question"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edittext_answer_b"
-        android:layout_width="@dimen/answerBtWidth"
-        android:layout_height="@dimen/answerBtHeight"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_answer_canvas"
-        android:hint="ADD ANSWER B"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_answer_a" />
+        <EditText
+            android:id="@+id/addqestion_et_question"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:text="Question"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquestion_tv_title" />
 
-    <EditText
-        android:id="@+id/edittext_answer_c"
-        android:layout_width="@dimen/answerBtWidth"
-        android:layout_height="@dimen/answerBtHeight"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_answer_canvas"
-        android:hint="ADD ANSWER C"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_answer_b" />
 
-    <EditText
-        android:id="@+id/edittext_answer_d"
-        android:layout_width="@dimen/answerBtWidth"
-        android:layout_height="@dimen/answerBtHeight"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_answer_canvas"
-        android:hint="ADD ANSWER D"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_answer_c" />
+        <EditText
+            android:id="@+id/addqestion_et_A"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:text="Answer A"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addqestion_et_question" />
 
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="@dimen/smallBtWidth"
-        android:layout_height="@dimen/smallBtHeight"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/rounded_button_small"
-        android:text="@string/save_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/addqestion_et_B"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:text="Answer B"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addqestion_et_A" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/addqestion_et_C"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:text="Answer C"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addqestion_et_B" />
+
+        <TextView
+            android:id="@+id/addquestion_tv_correct"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:text="Correct answer"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addqestion_et_C" />
+
+        <RadioGroup
+            android:id="@+id/addquestion_rbg_correct"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquestion_tv_correct">
+
+            <RadioButton
+                android:id="@+id/addquestion_rb_A"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="Begginer"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/addquestion_rb_B"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:text="Intermediate"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/addquestion_rb_C"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="Advanced"
+                android:textColor="@color/colorPrimary" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/addquestion_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/primary_btn_bg"
+            android:enabled="@{AddQuizViewModel.saveBtnEnabled}"
+            android:fontFamily="@font/work_sans"
+            android:onClick="@{(v) -> AddQuizViewModel.onButtonClicked(v)}"
+            android:text="Add Question"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

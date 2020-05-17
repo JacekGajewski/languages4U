@@ -6,7 +6,7 @@
     app:startDestination="@id/authView">
     <fragment
         android:id="@+id/authView"
-        android:name="com.languages4u.view.AuthView"
+        android:name="com.languages4u.view.auth.AuthView"
         android:label="AuthView"
         tools:layout="@layout/fragment_auth">
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpView"
-        android:name="com.languages4u.view.SignUpView"
+        android:name="com.languages4u.view.auth.SignUpView"
         android:label="SignUpView"
         tools:layout="@layout/fragment_sign_up">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/signInView"
-        android:name="com.languages4u.view.SignInView"
+        android:name="com.languages4u.view.auth.SignInView"
         android:label="SignInView"
         tools:layout="@layout/fragment_sign_in">
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/passwordRecoveryView"
-        android:name="com.languages4u.view.PasswordRecoveryView"
+        android:name="com.languages4u.view.auth.PasswordRecoveryView"
         android:label="fragment_pass_recovery"
         tools:layout="@layout/fragment_pass_recovery" >
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/addQuizView"
-        android:name="com.languages4u.view.AddQuizView"
+        android:name="com.languages4u.view.addquiz.AddQuizView"
         android:label="fragment_add_quiz"
         tools:layout="@layout/fragment_add_quiz" />
     <fragment

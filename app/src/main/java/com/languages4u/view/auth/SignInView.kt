@@ -1,4 +1,4 @@
-package com.languages4u.view
+package com.languages4u.view.auth
 
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +15,7 @@ import androidx.navigation.Navigation
 import com.languages4u.R
 import com.languages4u.data.NaviEvent
 import com.languages4u.databinding.FragmentSignInBinding
-import com.languages4u.viewmodel.SignInViewModel
+import com.languages4u.viewmodel.auth.SignInViewModel
 
 
 class SignInView : Fragment() {

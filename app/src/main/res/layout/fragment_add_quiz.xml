@@ -1,13 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.AddQuizView">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
+    <data>
+
+        <variable
+            name="AddQuizViewModel"
+            type="com.languages4u.viewmodel.addquiz.AddQuizViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:background="@color/colorPrimaryDark">
 
-</FrameLayout>
+
+        <EditText
+            android:id="@+id/addquiz_et_quizdesc"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:textColor="@color/colorPrimary"
+            android:text="Description"
+            app:layout_constraintStart_toEndOf="@+id/addquiz_tv_desc"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_name" />
+
+        <TextView
+            android:id="@+id/addquiz_tv_visibility"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/colorPrimary"
+            android:text="Visibility"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_rbgroup_difficulty" />
+
+        <TextView
+            android:id="@+id/addquiz_tv_desc"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/colorPrimary"
+            android:text="Quic desc."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_name" />
+
+        <Button
+            android:id="@+id/addquiz_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/primary_btn_bg"
+            android:fontFamily="@font/work_sans"
+            android:text="Add Quiz"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:enabled="@{AddQuizViewModel.saveBtnEnabled}"
+            android:onClick="@{(v) -> AddQuizViewModel.onButtonClicked(v)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/addquiz_tv_title"
+            android:layout_width="146dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/colorPrimary"
+            android:text="Add quiz"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/addquiz_et_quizname"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:textColor="@color/colorPrimary"
+            android:text="name"
+            app:layout_constraintStart_toEndOf="@+id/addquiz_tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_title" />
+
+        <TextView
+            android:id="@+id/addquiz_tv_name"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/colorPrimary"
+            android:text="Quiz name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_title" />
+
+        <RadioGroup
+            android:id="@+id/addquiz_rbgroup_visibility"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_visibility">
+
+            <RadioButton
+                android:id="@+id/addquiz_rb_public"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorPrimary"
+                android:text="Public" />
+
+            <RadioButton
+                android:id="@+id/addquiz_rb_private"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorPrimary"
+                android:text="Private" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/addquiz_tv_difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/colorPrimary"
+            android:text="Difficulty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_desc" />
+
+        <RadioGroup
+            android:id="@+id/addquiz_rbgroup_difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_difficulty">
+
+            <RadioButton
+                android:id="@+id/addquiz_rb_beginner"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorPrimary"
+                android:text="Begginer" />
+
+            <RadioButton
+                android:id="@+id/addquiz_rb_intermediate"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorPrimary"
+                android:text="Intermediate" />
+
+            <RadioButton
+                android:id="@+id/addquiz_rb_advanced"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorPrimary"
+                android:text="Advanced" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/addquiz_addquestion"
+            android:layout_width="176dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/primary_btn_bg"
+            android:enabled="@{AddQuizViewModel.saveBtnEnabled}"
+            android:fontFamily="@font/work_sans"
+            android:onClick="@{(v) -> AddQuizViewModel.onButtonClicked(v)}"
+            android:text="Add Question"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_rbgroup_visibility" />
+
+        <TextView
+            android:id="@+id/addquiz_tv_qno"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/colorPrimary"
+            android:text="Questions no:"
+            app:layout_constraintStart_toEndOf="@+id/addquiz_addquestion"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_rbgroup_visibility" />
+
+        <TextView
+            android:id="@+id/addquiz_tv_questnum"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/colorPrimary"
+            android:text="0"
+            app:layout_constraintStart_toEndOf="@+id/addquiz_tv_qno"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_rbgroup_visibility" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,49 +1,40 @@
-package com.languages4u.viewmodel
+package com.languages4u.viewmodel.auth
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.languages4u.auth.ILoginCallback
-import com.languages4u.data.DataOperations
 import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
-import com.languages4u.tools.SingleLiveEvent
 import com.languages4u.data.ToastEvent
+import com.languages4u.tools.SingleLiveEvent
 import java.lang.Exception
 
-class SignUpViewModel : ViewModel(), ILoginCallback {
+class SignInViewModel : ViewModel(), ILoginCallback {
+    val TAG = "SignInViewModel"
 
-    val TAG = "SignUpViewModel"
-
-    /*val firebase by lazy {
+    private val firebase by lazy {
         FirebaseOperations.instance
-    } */
-    // In purpose of injecting mock easily
-    var firebase : DataOperations = FirebaseOperations.instance
-
-    val navigatePage : MutableLiveData<String> by lazy {
-        SingleLiveEvent<String>() //SingleLiveEvent
     }
 
-    val email : MutableLiveData<String> by lazy {
+    val navigatePage: MutableLiveData<String> by lazy {
+        SingleLiveEvent<String>()
+    }
+
+    val email: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
-    val password : MutableLiveData<String> by lazy {
+    val password: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
-    val repeatPassword : MutableLiveData<String> by lazy {
+    val toastMsg: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
-    val toastMsg : MutableLiveData<String> by lazy {
-        MutableLiveData<String>()
-    }
 
-    fun onSignUpClick() {
-        Log.i(TAG, "onSignUpClick()")
+    fun onLoginClick() {
         if (email.value.isNullOrBlank()) {
             Log.i(TAG, "Empty email")
             toastMsg.value = ToastEvent.EmptyEmail.event
@@ -52,21 +43,20 @@ class SignUpViewModel : ViewModel(), ILoginCallback {
             toastMsg.value = ToastEvent.EmailInvalid.event
         } else {
             if (password.value.isNullOrBlank()) {
-                Log.i(TAG, "Password empty")
+                Log.i(TAG, "Empty email")
                 toastMsg.value = ToastEvent.EmptyPassword.event
-            } else if (password.value != repeatPassword.value) {
-                Log.i(TAG, "Passwords do not match")
-                toastMsg.value = ToastEvent.PassNotMatch.event
             } else {
-                Log.i(TAG, "firebase.login")
-                firebase.register(email.value!!, password.value!!, this)
+                firebase.login(email.value!!, password.value!!, this)
             }
         }
     }
 
-    fun onLoginAnnonymClick() {
-        Log.i(TAG, "onLoginAnnonymClick()")
+    fun onLoginAnonymClick() {
         firebase.loginAnonymously(this)
+    }
+
+    fun onForgotPasswordClick() {
+        navigatePage.value = NaviEvent.ForgotPass.event
     }
 
     override fun onSuccess() {

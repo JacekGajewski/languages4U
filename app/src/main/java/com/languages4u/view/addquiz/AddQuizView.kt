@@ -1,4 +1,4 @@
-package com.languages4u.view
+package com.languages4u.view.addquiz
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,27 +8,26 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.languages4u.R
-import com.languages4u.viewmodel.QuestionViewModel
+import com.languages4u.viewmodel.addquiz.AddQuizViewModel
 
-class QuestionView : Fragment() {
+class AddQuizView : Fragment() {
 
     companion object {
-        fun newInstance() = QuestionView()
+        fun newInstance() = AddQuizView()
     }
 
-    private lateinit var viewModel: QuestionViewModel
+    private lateinit var viewModel: AddQuizViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_question, container, false)
+        return inflater.inflate(R.layout.fragment_add_quiz, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(AddQuizViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 }

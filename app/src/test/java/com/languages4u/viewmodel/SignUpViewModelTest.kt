@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import com.languages4u.data.DataOperations
 import com.languages4u.data.NaviEvent
 import com.languages4u.data.ToastEvent
+import com.languages4u.viewmodel.auth.SignUpViewModel
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

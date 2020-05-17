@@ -1,4 +1,4 @@
-package com.languages4u.view.quiz.adapter
+package com.languages4u.adapter.quiz
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.languages4u.R
-import com.languages4u.view.quiz.QuizListModel
+import com.languages4u.models.quiz.QuizListModel
 
 class QuizAdapter() : RecyclerView.Adapter<QuizAdapter.QuizViewHolder>() {
 

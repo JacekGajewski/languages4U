@@ -3,7 +3,7 @@
     <data>
         <variable
             name="PasswordRecoveryViewModel"
-            type="com.languages4u.viewmodel.PasswordRecoveryViewModel" />
+            type="com.languages4u.viewmodel.auth.PasswordRecoveryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

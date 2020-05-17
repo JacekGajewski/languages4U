@@ -4,7 +4,7 @@
     <data>
         <variable
             name="AuthViewModel"
-            type="com.languages4u.viewmodel.AuthViewModel" />
+            type="com.languages4u.viewmodel.auth.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.languages4u.R
 import com.languages4u.databinding.FragmentQuizViewBinding
+import com.languages4u.models.quiz.QuestionModel
 import com.languages4u.viewmodel.quiz.QuizViewModel
 import kotlinx.android.synthetic.main.fragment_quiz_view.*
 import kotlin.random.Random
