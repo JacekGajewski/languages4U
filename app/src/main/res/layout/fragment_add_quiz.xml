@@ -24,7 +24,7 @@
             android:layout_marginTop="25dp"
             android:ems="10"
             android:textColor="@color/colorPrimary"
-            android:text="@{AddQuizViewModel.quizDesc}"
+            android:text="@={AddQuizViewModel.quizDesc}"
             app:layout_constraintStart_toEndOf="@+id/addquiz_tv_desc"
             app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_name" />
 
@@ -75,6 +75,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
             android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
             android:text="Add quiz"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -87,7 +88,7 @@
             android:layout_marginTop="25dp"
             android:ems="10"
             android:textColor="@color/colorPrimary"
-            android:text="@{AddQuizViewModel.quizName}"
+            android:text="@={AddQuizViewModel.quizName}"
             app:layout_constraintStart_toEndOf="@+id/addquiz_tv_name"
             app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_title" />
 
@@ -215,6 +216,21 @@
             android:text="@{AddQuizViewModel.questionsNumber}"
             app:layout_constraintStart_toEndOf="@+id/addquiz_tv_qno"
             app:layout_constraintTop_toBottomOf="@+id/addquiz_rbgroup_visibility" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/primary_btn_bg"
+            android:fontFamily="@font/work_sans"
+            android:onClick="@{v -> AddQuizViewModel.onClearClicked()}"
+            android:text="Clear"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

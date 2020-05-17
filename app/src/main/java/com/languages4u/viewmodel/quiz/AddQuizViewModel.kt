@@ -21,10 +21,6 @@ class AddQuizViewModel : ViewModel() {
         FirebaseRepository()
     }
 
-    val addQuizBtnEnabled : MutableLiveData<Boolean> by lazy {
-        MutableLiveData(false)
-    }
-
     val toastMsg : MutableLiveData<String> by lazy {
         MutableLiveData("")
     }
@@ -42,7 +38,7 @@ class AddQuizViewModel : ViewModel() {
     }
 
     val quizName : MutableLiveData<String> by lazy {
-        MutableLiveData("Quiz name vm")
+        MutableLiveData("Quiz name")
     }
 
     val quizDesc : MutableLiveData<String> by lazy {
@@ -131,9 +127,15 @@ class AddQuizViewModel : ViewModel() {
         navigatePage.value = NaviEvent.AddQuestion.event
     }
 
+    fun onClearClicked() {
+        clear()
+    }
+
     fun onAddQuestionClicked() {
 
         // TODO verify properties
+
+        Log.d(TAG, "Answer a:" + answerA.value)
 
         var correctAns = "A"
 
@@ -143,6 +145,8 @@ class AddQuizViewModel : ViewModel() {
             "C" -> correctAns = answerC.value!!
         }
 
+        Log.d(TAG, correctAnswer.value + " nx:" + correctAns)
+
         val quest = QuestionModel(question.value!!, answerA.value!!, answerB.value!!, answerC.value!!,
             correctAns, timer.value!!.toLong())
 
@@ -150,5 +154,16 @@ class AddQuizViewModel : ViewModel() {
         Log.d(TAG, "List size (question): " + quizQuestionsList.value!!.size.toString())
         updateQuestionNumber()
         navigatePage.value = NaviEvent.AddQuiz.event
+    }
+
+    fun clear() {
+        quizQuestionsList.value!!.clear()
+        quizName.value = "Quiz name"
+        quizDesc.value = "Quiz description"
+        question.value = "Question"
+        questionsNumber.value = "0"
+        answerA.value = "Answer A"
+        answerB.value = "Answer B"
+        answerC.value = "Answer C"
     }
 }

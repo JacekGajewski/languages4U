@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when(item.itemId) {
             R.id.add_quiz -> navController.navigate(R.id.addQuizView)
             R.id.profile -> navController.navigate(R.id.userProfileView)
+            R.id.home_view -> navController.navigate(R.id.startView)
             R.id.sign_out -> {
                 firebase.logout()
                 navController.navigate(R.id.authView)
