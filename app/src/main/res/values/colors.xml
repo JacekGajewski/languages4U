@@ -16,6 +16,7 @@
     <color name="buttonColor">#AA9020</color>
     <color name="smallButtonColor">#6160E0</color>
     <color name="questionCanvasColor">#6160E0</color>
+    <color name="green">#2A8A1F</color>
 
 
 </resources>

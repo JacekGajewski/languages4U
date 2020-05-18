@@ -3,8 +3,8 @@
     <dimen name="smallBtHeight">60dp</dimen>
     <dimen name="smallBtWidth">180dp</dimen>
 
-    <dimen name="answerBtHeight">100dp</dimen>
-    <dimen name="answerBtWidth">190dp</dimen>
+    <dimen name="answerBtHeight">75dp</dimen>
+    <dimen name="answerBtWidth">380dp</dimen>
 
     <dimen name="questionEtHeight">300dp</dimen>
     <dimen name="questionEtWidth">400dp</dimen>

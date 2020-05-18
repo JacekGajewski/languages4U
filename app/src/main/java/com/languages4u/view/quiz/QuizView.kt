@@ -131,7 +131,7 @@ class QuizView : Fragment() {
         viewModel.nextBtnEnabled.value = false
         viewModel.nextBtnVisibility.value = View.INVISIBLE
 
-        viewModel.optionBackground.value = requireContext().getDrawable(R.drawable.bg_odpowiedz)
+        viewModel.optionBackground.value = requireContext().getDrawable(R.drawable.bg_odpowiedz_2)
 
 //        viewModel.optionATextColor.value = requireContext().getColor(R.color.colorLightText)
 //        viewModel.optionBTextColor.value = requireContext().getColor(R.color.colorLightText)
@@ -211,7 +211,7 @@ class QuizView : Fragment() {
     }
 
     private fun resetOptions() {
-        viewModel.optionBackground.value = requireContext().getDrawable(R.drawable.bg_odpowiedz)
+        viewModel.optionBackground.value = requireContext().getDrawable(R.drawable.bg_odpowiedz_2)
 //        viewModel.optionATextColor.value = requireContext().getColor(R.color.colorLightText)
 //        viewModel.optionBTextColor.value = requireContext().getColor(R.color.colorLightText)
 //        viewModel.optionCTextColor.value = requireContext().getColor(R.color.colorLightText)
@@ -229,7 +229,7 @@ class QuizView : Fragment() {
             if (questionToAnswer[questionNum].answer == selectedAnswer.text.toString()) {
 
                 selectedAnswer.background =
-                    requireContext().getDrawable(R.drawable.bg_odpowiedz_right)
+                    requireContext().getDrawable(R.drawable.bg_odpowiedz_2_right)
 
                 correctAnswers++
 
@@ -238,7 +238,7 @@ class QuizView : Fragment() {
                 viewModel.feedbackVisibility.value = View.VISIBLE
             } else {
                 selectedAnswer.background =
-                    requireContext().getDrawable(R.drawable.bg_odpowiedz_wrong)
+                    requireContext().getDrawable(R.drawable.bg_odpowiedz_2_wrong)
 
                 wrongAnswers++
 

@@ -32,5 +32,33 @@
     <string name="ladowanie">ŁADOWANIE…</string>
     <string name="dalej">DALEJ</string>
     <string name="pytanie">Pytanie</string>
+    <string name="dodaj_pytanie_hint">treść pytania</string>
+    <string name="odp_A_hint">odpowiedź A</string>
+    <string name="odp_B_hint">odpowiedź B</string>
+    <string name="odp_C_hint">odpowiedź C</string>
+    <string name="odp_D_hint">odpowiedź D</string>
+    <string name="poprawna_odpowiedz">Poprawna odpowiedź:</string>
+    <string name="add_question">DODAJ PYTANIE</string>
+    <string name="save_question">ZAPISZ PYTANIE</string>
+    <string name="A">A</string>
+    <string name="B">B</string>
+    <string name="C">C</string>
+    <string name="dodaj_quiz">DODAJ QUIZ</string>
+    <string name="wyczysc">RESET</string>
+    <string name="nazwa_quizu">Nazwa </string>
+    <string name="opis_quizu">"Opis "</string>
+    <string name="poczatkujacy">Początkujący</string>
+    <string name="sr_zaawansowany">Średnio zaawansowany</string>
+    <string name="zaawansowany">Zaawansowany</string>
+    <string name="poz_trudnosci">Poziom trudności</string>
+    <string name="dostepnosc">Dostępność</string>
+    <string name="publiczny">Publiczny</string>
+    <string name="prywatny">Prywatny</string>
+    <string name="pyt_nr">"Pytanie nr: "</string>
+    <string name="profil">Mój profil</string>
+    <string name="str_glowna">Strona główna</string>
+    <string name="dodaj_quiz1">Dodaj quiz</string>
+    <string name="wyloguj">Wyloguj</string>
+
 
 </resources>
