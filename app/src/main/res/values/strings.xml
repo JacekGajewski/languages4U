@@ -59,6 +59,20 @@
     <string name="str_glowna">Strona główna</string>
     <string name="dodaj_quiz1">Dodaj quiz</string>
     <string name="wyloguj">Wyloguj</string>
+    <string name="open_quiz">OTWÓRZ QUIZ</string>
+    <string name="wyb_quiz">WYBIERZ QUIZ</string>
+    <string name="liczba_pytan">Liczba pytań</string>
+    <string name="ost_wynik">Twój ostatni wynik</string>
+    <string name="default_pic">domyslne_zdjecie</string>
+    <string name="rozp_quiz">ROZPOCZNIJ QUIZ</string>
+    <string name="LOGO_DEF">app_logo</string>
+    <string name="wyniki">WYNIKI</string>
+    <string name="popr_odp">"Poprawne odpowiedzi: "</string>
+    <string name="bld_odp">Błędne odpowiedzi</string>
+    <string name="pyt_bez_odp">"Pytania bez odpowiedzi: "</string>
+    <string name="wroc_inne">WYBIERZ INNY QUIZ</string>
+    <string name="nowy_nick">Edytuj nick</string>
+    <string name="zapisz">ZAPISZ</string>
 
 
 </resources>
