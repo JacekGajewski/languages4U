@@ -13,7 +13,7 @@ import java.lang.Exception
 
 class SignUpViewModel : ViewModel(), ILoginCallback {
 
-    val TAG = "SignUpViewModel"
+    private val TAG = "SignUpViewModel"
 
     /*val firebase by lazy {
         FirebaseOperations.instance
@@ -76,7 +76,8 @@ class SignUpViewModel : ViewModel(), ILoginCallback {
     override fun onFailure(exception: Exception?) {
         Log.i(TAG, "onFailure()")
         if (exception != null){
-            toastMsg.value = exception.message
+            Log.i(TAG, exception.message.toString())
+            toastMsg.value = exception.message.toString()
         }
     }
 }
