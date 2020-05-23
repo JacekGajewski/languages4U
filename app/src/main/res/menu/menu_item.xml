@@ -2,9 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item
-        android:id="@+id/profile"
-        android:title="Profile"/>
 
     <item
         android:id="@+id/home_view"
@@ -13,6 +10,10 @@
     <item
         android:id="@+id/add_quiz"
         android:title="Add quiz"/>
+
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"/>
 
     <item
         android:id="@+id/sign_out"

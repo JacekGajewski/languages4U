@@ -13,12 +13,15 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import com.languages4u.R
 import com.languages4u.data.DataOperations
 import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.OnUserStateChangeListener
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, OnUserStateChangeListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    OnUserStateChangeListener, FirebaseAuth.AuthStateListener {
     private val TAG = "MainActivity"
 
     lateinit var toolbar : Toolbar
@@ -28,6 +31,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var headerView : View
     lateinit var headerName : TextView
     lateinit var headerEmail : TextView
+
+    private var mNaviOptionsEnabled = false
 
 
     var firebase : DataOperations = FirebaseOperations.instance
@@ -51,15 +56,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         NavigationUI.setupWithNavController(navigationView, navController)
         //navigationView.setNavigationItemSelectedListener { this }
 
+        // navi drawer
         navigationView.setNavigationItemSelectedListener(this)
-
         headerView = navigationView.getHeaderView(0)
         headerEmail = headerView.findViewById(R.id.profile_email)
         headerName = headerView.findViewById(R.id.profile_name)
         firebase.registerListener(this)
+        firebase.registerAuthStateListener(this)
     }
-
-
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(
@@ -72,12 +76,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         Log.d(TAG, "onNavigationItemSelected")
 
         when(item.itemId) {
-            R.id.add_quiz -> navController.navigate(R.id.addQuizView)
-            R.id.profile -> navController.navigate(R.id.userProfileView)
-            R.id.home_view -> navController.navigate(R.id.startView)
+            R.id.add_quiz -> {
+                if(mNaviOptionsEnabled) {
+                    navController.navigate(R.id.addQuizView)
+                }
+            }
+            R.id.profile -> {
+                if(mNaviOptionsEnabled) {
+                    navController.navigate(R.id.userProfileView)
+                }
+            }
             R.id.sign_out -> {
-                firebase.logout()
-                navController.navigate(R.id.authView)
+                if(mNaviOptionsEnabled) {
+                    firebase.logout()
+                    navController.navigate(R.id.authView)
+                }
+            }
+            R.id.home_view -> {
+                if(mNaviOptionsEnabled) {
+                    navController.navigate(R.id.startView)
+                }
             }
         }
         return true;
@@ -94,5 +112,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onUserStateChangeListener(email: String, nick: String) {
         headerEmail.setText(email)
         headerName.setText(nick)
+    }
+
+    override fun onAuthStateChanged(auth : FirebaseAuth) {
+        if(auth.currentUser != null) {
+            headerName.setText(auth.currentUser?.displayName)
+            headerEmail.setText(auth.currentUser?.email)
+            mNaviOptionsEnabled = true;
+        } else {
+            headerName.setText("Log in")
+            headerEmail.setText("")
+            mNaviOptionsEnabled = false;
+        }
     }
 }

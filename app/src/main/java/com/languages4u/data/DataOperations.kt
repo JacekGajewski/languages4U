@@ -1,6 +1,7 @@
 package com.languages4u.data
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.languages4u.auth.ILoginCallback
 
@@ -13,5 +14,6 @@ interface DataOperations {
     fun currentUser() : FirebaseUser?
     fun logout()
 
+    fun registerAuthStateListener(listener: FirebaseAuth.AuthStateListener)
     fun registerListener(listener : OnUserStateChangeListener)
 }
