@@ -159,10 +159,17 @@
             app:destination="@id/userProfileView" />
     </fragment>
     <fragment
-        android:id="@+id/userProfileView"
-        android:name="com.languages4u.view.UserProfileView"
+        android:id="@+id/userSettingsView"
+        android:name="com.languages4u.view.UserSettingsView"
         android:label="UserProfileView"
-        />
+        tools:layout="@layout/fragment_user_settings">
+        <action
+            android:id="@+id/action_userSettingsView_to_userProfileView"
+            app:destination="@id/userProfileView"
+            app:popUpTo="@id/userProfileView"
+            app:popUpToInclusive="true" />
+    </fragment>
+
     <fragment
         android:id="@+id/addQuestionView"
         android:name="com.languages4u.view.quiz.AddQuestionView"
@@ -172,5 +179,15 @@
             android:id="@+id/action_addQuestionView_to_addQuizView"
             app:destination="@id/addQuizView" />
     </fragment>
+    <fragment
+        android:id="@+id/userProfileView"
+        android:name="com.languages4u.view.UserProfileView"
+        android:label="UserProfileView"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_userProfileView_to_userSettingsView"
+            app:destination="@id/userSettingsView" />
+    </fragment>
+
 
 </navigation>

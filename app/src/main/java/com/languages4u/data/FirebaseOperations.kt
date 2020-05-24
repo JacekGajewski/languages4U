@@ -78,7 +78,14 @@ open class FirebaseOperations : DataOperations {
     }
 
     override fun currentUser() = firebaseAuth.currentUser
-    override fun logout() = firebaseAuth.signOut()
+    override fun logout() {
+        firebaseAuth.signOut()
+        listener.onUserStateChangeListener("", "")
+    }
+
+    override fun registerAuthStateListener(listener: FirebaseAuth.AuthStateListener){
+        firebaseAuth.addAuthStateListener(listener)
+    }
 
     override fun registerListener(listener: OnUserStateChangeListener) {
         this.listener = listener

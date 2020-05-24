@@ -12,5 +12,13 @@ enum class ToastEvent(val event : String) {
     FacebookSignInError("Sign in with credentials failed"),
     SignInCancelled("Sign in cancelled"),
     SignInFail("Sign in failed"),
-    NoQuestionAdded("Add at least one question")
+    NoQuestionAdded("Add at least one question"),
+
+//    Profile Setting
+    AccountDeleted("Account was successfully deleted"),
+    ErrorAccountDeleted("Error occurred while deleting an account"),
+    SuccessfulUpdate("Account successfully updated"),
+    NicknameEmpty("Please enter a nickname"),
+    ErrorNicknameUpdate("Error occurred while updating a nickname")
+
 }
