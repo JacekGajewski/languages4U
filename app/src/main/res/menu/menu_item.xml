@@ -5,11 +5,13 @@
 
     <item
         android:id="@+id/home_view"
-        android:title="Home"/>
-
+        android:title="@string/str_glowna" />
     <item
         android:id="@+id/add_quiz"
-        android:title="Add quiz"/>
+        android:title="@string/dodaj_quiz1" />
+    <item
+        android:id="@+id/profile"
+        android:title="@string/profil" />
 
     <item
         android:id="@+id/profile"
@@ -17,5 +19,5 @@
 
     <item
         android:id="@+id/sign_out"
-        android:title="Logout"/>
+        android:title="@string/wyloguj" />
 </menu>

@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">Languages4U</string>
+    <string name="app_name">languages4U</string>
 
     <!--Authorization-->
     <string name="e_mail">E-mail</string>
-    <string name="password">Password</string>
-    <string name="repeat_password">Repeat password</string>
+    <string name="password">Hasło</string>
+    <string name="repeat_password">Powtórz hasło</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="login_anonymously">Login anonymously</string>
-    <string name="sign_up">Sign up</string>
+    <string name="sign_up">ZAREJESTRUJ</string>
     <string name="log_in">Login</string>
-    <string name="reset_password">Reset password</string>
-    <string name="reset_password_instructions">Enter your registration email to receive password reset instructions.</string>
-    <string name="save_button">save</string>
+    <string name="reset_password">Odzyskaj hasło</string>
+    <string name="reset_password_instructions">Wprowadź swój mail, aby uzyskać instrukcję odzykania hasła.</string>
+    <string name="save_button">ZAPISZ PYTANIE</string>
 
     <!--Facebook Authentication-->
     <string name="facebook_app_id">3086817214684483</string>
@@ -19,4 +19,68 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loguj_fb">FACEBOOK</string>
+    <string name="loguj_google">GOOGLE</string>
+    <string name="masz_konto">Masz już konto?</string>
+    <string name="dolacz">Dołącz do nas!</string>
+    <string name="zaloguj">ZALOGUJ SIĘ</string>
+    <string name="zarejestruj">ZAREJESTRUJ SIĘ</string>
+    <string name="anonimowo">Pozwól mi sprawdzić aplikację anonimowo</string>
+    <string name="loguj">ZALOGUJ</string>
+    <string name="zapomnialem_hasla">"Zapomniałeś hasła? KLIKNIJ"</string>
+    <string name="poznawaj_jezyki">BAW SIĘ Z NAMI</string>
+    <string name="ladowanie">ŁADOWANIE…</string>
+    <string name="dalej">DALEJ</string>
+    <string name="pytanie">Pytanie</string>
+    <string name="dodaj_pytanie_hint">treść pytania</string>
+    <string name="odp_A_hint">odpowiedź A</string>
+    <string name="odp_B_hint">odpowiedź B</string>
+    <string name="odp_C_hint">odpowiedź C</string>
+    <string name="odp_D_hint">odpowiedź D</string>
+    <string name="poprawna_odpowiedz">Poprawna odpowiedź:</string>
+    <string name="add_question">DODAJ PYTANIE</string>
+    <string name="save_question">ZAPISZ PYTANIE</string>
+    <string name="A">A</string>
+    <string name="B">B</string>
+    <string name="C">C</string>
+    <string name="dodaj_quiz">DODAJ QUIZ</string>
+    <string name="wyczysc">RESET</string>
+    <string name="nazwa_quizu">Nazwa </string>
+    <string name="opis_quizu">"Opis "</string>
+    <string name="poczatkujacy">Początkujący</string>
+    <string name="sr_zaawansowany">Średnio zaawansowany</string>
+    <string name="zaawansowany">Zaawansowany</string>
+    <string name="poz_trudnosci">Poziom trudności</string>
+    <string name="dostepnosc">Dostępność</string>
+    <string name="publiczny">Publiczny</string>
+    <string name="prywatny">Prywatny</string>
+    <string name="pyt_nr">"Pytanie nr: "</string>
+    <string name="profil">Mój profil</string>
+    <string name="str_glowna">Strona główna</string>
+    <string name="dodaj_quiz1">Dodaj quiz</string>
+    <string name="wyloguj">Wyloguj</string>
+    <string name="open_quiz">OTWÓRZ QUIZ</string>
+    <string name="wyb_quiz">WYBIERZ QUIZ</string>
+    <string name="liczba_pytan">Liczba pytań</string>
+    <string name="ost_wynik">Twój ostatni wynik</string>
+    <string name="default_pic">domyslne_zdjecie</string>
+    <string name="rozp_quiz">ROZPOCZNIJ QUIZ</string>
+    <string name="LOGO_DEF">app_logo</string>
+    <string name="wyniki">WYNIKI</string>
+    <string name="popr_odp">"Poprawne odpowiedzi: "</string>
+    <string name="bld_odp">Błędne odpowiedzi</string>
+    <string name="pyt_bez_odp">"Pytania bez odpowiedzi: "</string>
+    <string name="wroc_inne">WYBIERZ INNY QUIZ</string>
+    <string name="nowy_nick">Edytuj nick</string>
+    <string name="zapisz">ZAPISZ</string>
+    <string name="aktualizuj">AKTUALIZUJ</string>
+    <string name="login">Login</string>
+    <string name="new_password">Nowe hasło</string>
+    <string name="usun_konto">USUŃ KONTO</string>
+    <string name="edytuj">EDYTUJ</string>
+    <string name="QUIZY">Quizy</string>
+    <string name="rozegrane">Rozegrane</string>
+    <string name="znajomi">Znajomi</string>
+
+
 </resources>

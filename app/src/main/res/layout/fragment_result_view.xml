@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -8,11 +10,10 @@
             type="com.languages4u.viewmodel.quiz.ResultViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark">
+        android:background="@drawable/auth_bckg">
 
 
         <TextView
@@ -20,55 +21,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="270dp"
             android:layout_marginEnd="32dp"
-            android:fontFamily="@font/crimson_text"
-            android:text="Results"
+            android:background="@drawable/button_start"
+            android:fontFamily="@font/work_sans"
+            android:gravity="center"
+            android:text="@string/wyniki"
             android:textColor="@color/colorPrimary"
-            android:textSize="36sp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/results_progress"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_marginTop="64dp"
-            android:indeterminate="false"
-            android:indeterminateDrawable="@drawable/circular_progress"
-            android:progress="@{ResultViewModel.progressBar}"
-            android:progressDrawable="@drawable/circular_progress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/results_title" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/results_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
             android:fontFamily="@font/work_sans"
             android:text="@{ResultViewModel.resultPercent}"
             android:textColor="@color/colorPrimary"
             android:textSize="26sp"
-            app:layout_constraintBottom_toBottomOf="@+id/results_progress"
-            app:layout_constraintEnd_toEndOf="@+id/results_progress"
-            app:layout_constraintStart_toStartOf="@+id/results_progress"
-            app:layout_constraintTop_toTopOf="@+id/results_progress" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/results_title" />
 
         <TextView
             android:id="@+id/results_correct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/work_sans"
-            android:text="Correct Answers"
-            android:textColor="@color/colorLightText"
+            android:text="@string/popr_odp"
+            android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/results_progress" />
+            app:layout_constraintTop_toBottomOf="@+id/results_percent"
+            app:layout_constraintVertical_bias="0.19999999" />
 
         <TextView
             android:id="@+id/results_wrong"
@@ -77,8 +73,8 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/work_sans"
-            android:text="Wrong Answers"
-            android:textColor="@color/colorLightText"
+            android:text="@string/bld_odp"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/results_correct" />
@@ -90,8 +86,8 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/work_sans"
-            android:text="Questions Missed"
-            android:textColor="@color/colorLightText"
+            android:text="@string/pyt_bez_odp"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/results_wrong" />
@@ -103,7 +99,7 @@
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/work_sans"
             android:text="@{ResultViewModel.correctAnswers}"
-            android:textColor="@color/colorLightText"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/results_correct" />
@@ -116,7 +112,7 @@
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/work_sans"
             android:text="@{ResultViewModel.wrongAnswers}"
-            android:textColor="@color/colorLightText"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/results_correct_text" />
@@ -129,26 +125,29 @@
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/work_sans"
             android:text="@{ResultViewModel.questionsMissed}"
-            android:textColor="@color/colorLightText"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/results_wrong_text" />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/results_home_btn"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/primary_btn_bg"
+            android:background="@drawable/bg_accept"
             android:fontFamily="@font/work_sans"
-            android:text="Go To Home"
+            android:onClick="@{() -> ResultViewModel.goHomeClicked()}"
+            android:text="@string/wroc_inne"
             android:textAllCaps="false"
             android:textSize="16sp"
-            android:onClick="@{() -> ResultViewModel.goHomeClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/results_missed"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

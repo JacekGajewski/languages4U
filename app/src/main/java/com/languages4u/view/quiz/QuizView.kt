@@ -124,24 +124,24 @@ class QuizView : Fragment() {
 
         viewModel.optionVisibility.value = View.VISIBLE
 
-        viewModel.nextBtn.value = "Next Question"
+        viewModel.nextBtn.value = "Następne pytanie"
 
         viewModel.feedbackVisibility.value = View.INVISIBLE
 
         viewModel.nextBtnEnabled.value = false
         viewModel.nextBtnVisibility.value = View.INVISIBLE
 
-        viewModel.optionBackground.value = requireContext().getDrawable(R.drawable.outline_light_btn_bg)
+        viewModel.optionBackground.value = requireContext().getDrawable(R.drawable.bg_odpowiedz_2)
 
-        viewModel.optionATextColor.value = requireContext().getColor(R.color.colorLightText)
-        viewModel.optionBTextColor.value = requireContext().getColor(R.color.colorLightText)
-        viewModel.optionCTextColor.value = requireContext().getColor(R.color.colorLightText)
+//        viewModel.optionATextColor.value = requireContext().getColor(R.color.colorLightText)
+//        viewModel.optionBTextColor.value = requireContext().getColor(R.color.colorLightText)
+//        viewModel.optionCTextColor.value = requireContext().getColor(R.color.colorLightText)
     }
 
     private fun loadQuestion(questionNumber: Int) {
 //        Populate the view
-        viewModel.questionNumber.value = questionNumber.toString()
-        viewModel.quizTitle.value = questionToAnswer[questionNumber].question
+        viewModel.questionNumber.value = (questionNumber+1).toString()
+        viewModel.question.value = questionToAnswer[questionNumber].question
 
 //        TODO: Randomize order
         viewModel.optionA.value = questionToAnswer[questionNumber].option_a
@@ -167,8 +167,9 @@ class QuizView : Fragment() {
         countDownTimer = object : CountDownTimer(timeToAnswer * 1000, 10) {
             override fun onFinish() {
                 canAnswer = false
-                viewModel.feedback.value = "Time is up"
+                viewModel.feedback.value = "Czas minął!"
                 viewModel.feedbackTextColor.value = requireContext().getColor(R.color.colorPrimary)
+                viewModel.feedbackVisibility.value = View.VISIBLE
 
                 notAnswered++
                 showNextBtn()
@@ -210,10 +211,10 @@ class QuizView : Fragment() {
     }
 
     private fun resetOptions() {
-        viewModel.optionBackground.value = requireContext().getDrawable(R.drawable.outline_light_btn_bg)
-        viewModel.optionATextColor.value = requireContext().getColor(R.color.colorLightText)
-        viewModel.optionBTextColor.value = requireContext().getColor(R.color.colorLightText)
-        viewModel.optionCTextColor.value = requireContext().getColor(R.color.colorLightText)
+        viewModel.optionBackground.value = requireContext().getDrawable(R.drawable.bg_odpowiedz_2)
+//        viewModel.optionATextColor.value = requireContext().getColor(R.color.colorLightText)
+//        viewModel.optionBTextColor.value = requireContext().getColor(R.color.colorLightText)
+//        viewModel.optionCTextColor.value = requireContext().getColor(R.color.colorLightText)
 
         viewModel.feedbackVisibility.value = View.INVISIBLE
         viewModel.nextBtnEnabled.value = false
@@ -222,26 +223,28 @@ class QuizView : Fragment() {
 
     private fun verifyAnswer(selectedAnswer: Button) {
 
-        selectedAnswer.setTextColor(requireContext().getColor(R.color.colorDark))
+//        selectedAnswer.setTextColor(requireContext().getColor(R.color.colorDark))
 
         if (canAnswer) {
             if (questionToAnswer[questionNum].answer == selectedAnswer.text.toString()) {
 
                 selectedAnswer.background =
-                    requireContext().getDrawable(R.drawable.correct_answer_btn_bg)
+                    requireContext().getDrawable(R.drawable.bg_odpowiedz_2_right)
 
                 correctAnswers++
 
-                viewModel.feedback.value = "Correct answer"
-                viewModel.feedbackTextColor.value = requireContext().getColor(R.color.colorPrimary)
+                viewModel.feedback.value = "Poprawna odpowiedź!"
+                viewModel.feedbackTextColor.value = requireContext().getColor(R.color.colorRight)
+                viewModel.feedbackVisibility.value = View.VISIBLE
             } else {
                 selectedAnswer.background =
-                    requireContext().getDrawable(R.drawable.wrong_answer_btn_bg)
+                    requireContext().getDrawable(R.drawable.bg_odpowiedz_2_wrong)
 
                 wrongAnswers++
 
-                viewModel.feedback.value = "Wrong answer \n Correct answer: " + questionToAnswer[questionNum].answer
+                viewModel.feedback.value = "Zła odpowiedź! \nPoprawna odpowiedź: " + questionToAnswer[questionNum].answer
                 viewModel.feedbackTextColor.value = requireContext().getColor(R.color.colorAccent)
+                viewModel.feedbackVisibility.value = View.VISIBLE
             }
             canAnswer = false
             countDownTimer.cancel()
@@ -252,7 +255,7 @@ class QuizView : Fragment() {
     private fun showNextBtn() {
 
         if (questionNum + 1 == totalQuestionsToAnswer.toInt()) {
-            viewModel.nextBtn.value = "Submit Results"
+            viewModel.nextBtn.value = "Zapisz rozwiązanie"
         }
 
         viewModel.nextBtnEnabled.value = true
