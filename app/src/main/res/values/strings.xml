@@ -73,6 +73,14 @@
     <string name="wroc_inne">WYBIERZ INNY QUIZ</string>
     <string name="nowy_nick">Edytuj nick</string>
     <string name="zapisz">ZAPISZ</string>
+    <string name="aktualizuj">AKTUALIZUJ</string>
+    <string name="login">Login</string>
+    <string name="new_password">Nowe hasło</string>
+    <string name="usun_konto">USUŃ KONTO</string>
+    <string name="edytuj">EDYTUJ</string>
+    <string name="QUIZY">Quizy</string>
+    <string name="rozegrane">Rozegrane</string>
+    <string name="znajomi">Znajomi</string>
 
 
 </resources>

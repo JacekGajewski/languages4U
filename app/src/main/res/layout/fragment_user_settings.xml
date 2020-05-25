@@ -13,160 +13,182 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:visibility="visible">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_pic"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="60dp"
-            android:elevation="6dp"
-            android:src="@drawable/profilepic"
-            app:civ_border_color="@color/lightBlue"
-            app:civ_border_width="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/nick_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@{UserSettingsViewModel.nickname}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/new_nick_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="14dp"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/update_nick_btn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nick_name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nickname"
-                android:inputType="text"
-                android:text="@={UserSettingsViewModel.newNickname}"
-                android:textColorHint="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/update_nick_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/primary_btn_bg"
-            android:onClick="@{() -> UserSettingsViewModel.onUpdateNicknameClicked()}"
-            android:text="Update"
-            app:layout_constraintBottom_toBottomOf="@+id/new_nick_name"
-            app:layout_constraintEnd_toEndOf="parent" />
+        android:background="@color/green">
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="14dp"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/update_email_btn"
-            app:layout_constraintStart_toStartOf="@+id/new_nick_name"
-            app:layout_constraintTop_toBottomOf="@+id/new_nick_name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:text="@={UserSettingsViewModel.email}"
-                android:textColorHint="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/update_email_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/primary_btn_bg"
-            android:onClick="@{() -> UserSettingsViewModel.onUpdateEmailClicked()}"
-            android:text="Update"
-            app:layout_constraintBottom_toBottomOf="@+id/email"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/new_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="14dp"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/update_password_btn"
-            app:layout_constraintStart_toStartOf="@+id/new_nick_name"
-            app:layout_constraintTop_toBottomOf="@+id/email">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="New Password"
-                android:inputType="textPassword"
-                android:text="@={UserSettingsViewModel.newPassword}"
-                android:textColorHint="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/update_password_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/primary_btn_bg"
-            android:onClick="@{() -> UserSettingsViewModel.onUpdatePasswordClicked()}"
-            android:text="Update"
-            app:layout_constraintBottom_toBottomOf="@+id/new_password"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/old_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:layout_marginEnd="64dp"
-            android:textColorHint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/new_nick_name"
-            app:layout_constraintTop_toBottomOf="@+id/new_password">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:text="@={UserSettingsViewModel.oldPassword}"
-                android:textColorHint="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <Button
-            android:id="@+id/deleteBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:onClick="@{() -> UserSettingsViewModel.onDeleteClicked()}"
-            android:text=" DELETE ACCOUNT "
-            android:layout_marginBottom="12dp"
-            android:layout_marginStart="12dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/card_bg"
+            android:fitsSystemWindows="true"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/old_password" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="60dp"
+                android:elevation="6dp"
+                android:src="@drawable/profilepic"
+                app:civ_border_color="@color/lightBlue"
+                app:civ_border_width="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/nick_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@{UserSettingsViewModel.nickname}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/new_nick_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/update_nick_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nick_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/login"
+                    android:inputType="text"
+                    android:text="@={UserSettingsViewModel.newNickname}"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/update_nick_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_radio"
+                android:onClick="@{() -> UserSettingsViewModel.onUpdateNicknameClicked()}"
+                android:text="@string/aktualizuj"
+                app:layout_constraintBottom_toBottomOf="@+id/new_nick_name"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/update_email_btn"
+                app:layout_constraintStart_toStartOf="@+id/new_nick_name"
+                app:layout_constraintTop_toBottomOf="@+id/new_nick_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/e_mail"
+                    android:inputType="textEmailAddress"
+                    android:text="@={UserSettingsViewModel.email}"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/update_email_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_radio"
+                android:onClick="@{() -> UserSettingsViewModel.onUpdateEmailClicked()}"
+                android:text="@string/aktualizuj"
+                app:layout_constraintBottom_toBottomOf="@+id/email"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/new_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/update_password_btn"
+                app:layout_constraintStart_toStartOf="@+id/new_nick_name"
+                app:layout_constraintTop_toBottomOf="@+id/email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_password"
+                    android:inputType="textPassword"
+                    android:text="@={UserSettingsViewModel.newPassword}"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/update_password_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_radio"
+                android:onClick="@{() -> UserSettingsViewModel.onUpdatePasswordClicked()}"
+                android:text="@string/aktualizuj"
+                app:layout_constraintBottom_toBottomOf="@+id/new_password"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/old_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="64dp"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/new_nick_name"
+                app:layout_constraintTop_toBottomOf="@+id/new_password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:text="@={UserSettingsViewModel.oldPassword}"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/deleteBtn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="52dp"
+                android:background="@drawable/bg_odpowiedz_2_wrong"
+                android:onClick="@{() -> UserSettingsViewModel.onDeleteClicked()}"
+                android:text="@string/usun_konto"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
