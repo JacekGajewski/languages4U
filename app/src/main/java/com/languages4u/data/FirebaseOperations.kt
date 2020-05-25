@@ -1,6 +1,7 @@
 package com.languages4u.data
 
 import android.util.Log
+import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -80,6 +81,7 @@ open class FirebaseOperations : DataOperations {
     override fun currentUser() = firebaseAuth.currentUser
     override fun logout() {
         firebaseAuth.signOut()
+        LoginManager.getInstance().logOut()
         listener.onUserStateChangeListener("", "")
     }
 

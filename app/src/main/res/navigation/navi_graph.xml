@@ -153,10 +153,9 @@
         tools:layout="@layout/fragment_start_view">
         <action
             android:id="@+id/action_startView_to_listView"
-            app:destination="@id/listView" />
-        <action
-            android:id="@+id/action_startView_to_userProfileView"
-            app:destination="@id/userProfileView" />
+            app:destination="@id/listView"
+            app:popUpTo="@id/listView"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/userSettingsView"
