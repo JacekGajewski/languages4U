@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -16,9 +18,10 @@ import com.languages4u.R
 import com.languages4u.data.NaviEvent
 import com.languages4u.databinding.FragmentAddQuizBinding
 import com.languages4u.viewmodel.quiz.AddQuizViewModel
+import kotlinx.android.synthetic.main.fragment_add_quiz.*
 
 
-class AddQuizView: Fragment() {
+class AddQuizView : Fragment() {
     private val TAG = "AddQuizView"
 
     companion object {
@@ -49,6 +52,30 @@ class AddQuizView: Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel.navigatePage.observe(viewLifecycleOwner, naviObserver)
         viewModel.toastMsg.observe(viewLifecycleOwner, toastMsgObserver)
+
+        if (spinner != null) {
+
+            spinner.onItemSelectedListener = object : OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemSelected(
+                    parentView: AdapterView<*>?,
+                    selectedItemView: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    Log.d("DUPA", position.toString())
+                    var language =
+                        "https://firebasestorage.googleapis.com/v0/b/languages4u-fdf6b.appspot.com/o/quiz-covers%2Fenglish.jpeg?alt=media&token=1340e188-fe53-445a-bf9e-137c256fef80"
+                    when (position) {
+                        1 -> language =
+                            "https://firebasestorage.googleapis.com/v0/b/languages4u-fdf6b.appspot.com/o/quiz-covers%2Fgerman.jpg?alt=media&token=325a8fa1-ef72-4b73-b907-7d80216ee1ed"
+                    }
+                    viewModel.spinnerValue = language
+                }
+            }
+        }
     }
 
     private val naviObserver = Observer<String> { newNavi ->
@@ -58,6 +85,7 @@ class AddQuizView: Fragment() {
             NaviEvent.AddQuestion.event -> navController!!.navigate(R.id.action_addQuizView_to_addQuestionView)
         }
     }
+
 
     private val toastMsgObserver = Observer<String> { msg ->
         Log.d(TAG, "Toast msg observer called")
