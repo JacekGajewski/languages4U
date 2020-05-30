@@ -83,8 +83,11 @@
     <string name="znajomi">Znajomi</string>
 
     <string-array name="languages">
-        <item>English</item>
-        <item>German</item>
+        <item>Angielski</item>
+        <item>Niemiecki</item>
+        <item>Rosyjski</item>
+        <item>Hiszpański</item>
+        <item>Chiński</item>
     </string-array>
 
 </resources>

@@ -178,7 +178,7 @@ class AddQuizViewModel : ViewModel() {
     }
 
     init {
-        val list = mutableListOf("english", "german")
+        val list = mutableListOf("angielski", "niemiecki", "rosyjski", "hiszpański", "chiński")
         entries.value = list
     }
 }

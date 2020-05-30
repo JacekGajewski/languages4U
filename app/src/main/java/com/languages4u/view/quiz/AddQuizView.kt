@@ -71,6 +71,13 @@ class AddQuizView : Fragment() {
                     when (position) {
                         1 -> language =
                             "https://firebasestorage.googleapis.com/v0/b/languages4u-fdf6b.appspot.com/o/quiz-covers%2Fgerman.jpg?alt=media&token=325a8fa1-ef72-4b73-b907-7d80216ee1ed"
+                        2 -> language =
+                            "https://firebasestorage.googleapis.com/v0/b/languages4u-fdf6b.appspot.com/o/quiz-covers%2Frussian.jpg?alt=media&token=606a7249-236a-4c28-b365-1aa8c8ad4236"
+                        3 -> language =
+                            "https://firebasestorage.googleapis.com/v0/b/languages4u-fdf6b.appspot.com/o/quiz-covers%2Fspanish.png?alt=media&token=ab87209b-ac80-4601-a844-2fe13711c37b"
+                        4 -> language =
+                            "https://firebasestorage.googleapis.com/v0/b/languages4u-fdf6b.appspot.com/o/quiz-covers%2Fchinese.jpg?alt=media&token=0c60aa5e-e3e5-4444-86eb-9381a18ba06b"
+
                     }
                     viewModel.spinnerValue = language
                 }
