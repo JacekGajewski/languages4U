@@ -17,9 +17,8 @@ import com.languages4u.tools.SingleLiveEvent
 class AddQuizViewModel : ViewModel() {
     val TAG = "AddQuizViewModel"
 
-    val firebaseRepository : IFirebaseRepository by lazy {
-        FirebaseRepository()
-    }
+    var firebaseRepository : IFirebaseRepository = FirebaseRepository()
+
 
     val toastMsg : MutableLiveData<String> by lazy {
         MutableLiveData("")
@@ -91,7 +90,10 @@ class AddQuizViewModel : ViewModel() {
             return
         }
 
-        // TODO validate quiz properties
+        if (quizName.value!!.isNullOrBlank()) {
+            toastMsg.value = ToastEvent.NoQuizName.event
+            return
+        }
 
         val quiz = QuizListModel(quizName.value!!, quizDesc.value!!, "No Image added yet(TODO)",
             quizDifficulty.value!!, quizVisibility.value!!, quizQuestionsList.value!!.size.toLong())
@@ -133,7 +135,16 @@ class AddQuizViewModel : ViewModel() {
 
     fun onAddQuestionClicked() {
 
-        // TODO verify properties
+        if (question.value.isNullOrBlank()) {
+            toastMsg.value = ToastEvent.NoQuestion.event
+            return
+        }
+
+        if (answerA.value.isNullOrBlank() || answerB.value.isNullOrBlank() ||
+            answerC.value.isNullOrBlank()) {
+            toastMsg.value = ToastEvent.NoAnswer.event
+            return
+        }
 
         Log.d(TAG, "Answer a:" + answerA.value)
 
@@ -158,12 +169,12 @@ class AddQuizViewModel : ViewModel() {
 
     fun clear() {
         quizQuestionsList.value!!.clear()
-        quizName.value = "Quiz name"
-        quizDesc.value = "Quiz description"
-        question.value = "Question"
-        questionsNumber.value = "0"
-        answerA.value = "Answer A"
-        answerB.value = "Answer B"
-        answerC.value = "Answer C"
+        quizName.value = ""
+        quizDesc.value = ""
+        question.value = ""
+        questionsNumber.value = ""
+        answerA.value = ""
+        answerB.value = ""
+        answerC.value = ""
     }
 }

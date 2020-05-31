@@ -1,4 +1,4 @@
-package com.languages4u.viewmodel
+package com.languages4u.viewmodel.auth
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
