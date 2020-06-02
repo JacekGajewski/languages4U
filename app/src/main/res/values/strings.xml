@@ -81,6 +81,7 @@
     <string name="QUIZY">Quizy</string>
     <string name="rozegrane">Rozegrane</string>
     <string name="znajomi">Znajomi</string>
+    <string name="jezyk">Język</string>
 
     <string-array name="languages">
         <item>English</item>

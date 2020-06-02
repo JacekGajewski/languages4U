@@ -183,6 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:hint="E-mail"
                         android:paddingLeft="20dp"
                         android:text="@{UserProfileViewModel.email}"
                         android:textStyle="bold" />
@@ -205,8 +206,8 @@
 
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:hint="Login"
                         android:paddingLeft="20dp"
-                        android:text="+266 225 225"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -215,7 +216,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp">
+                    android:paddingLeft="25dp"
+                    android:visibility="invisible">
 
                     <ImageView
                         android:layout_width="36dp"
@@ -237,7 +239,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp">
+                    android:paddingLeft="25dp"
+                    android:visibility="invisible">
 
                     <ImageView
                         android:layout_width="36dp"

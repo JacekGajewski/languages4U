@@ -25,6 +25,7 @@
             android:background="@drawable/bg_radio_2"
             android:ems="10"
             android:gravity="center"
+            android:hint="Opis quizu"
             android:text="@={AddQuizViewModel.quizDesc}"
             android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
@@ -158,21 +159,38 @@
             android:id="@+id/addquiz_tv_difficulty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="25dp"
             android:text="@string/poz_trudnosci"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.16"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_desc" />
+
+        <TextView
+            android:id="@+id/addquiz_tv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/jezyk"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toEndOf="@+id/addquiz_tv_difficulty"
             app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_desc" />
 
         <RadioGroup
             android:id="@+id/addquiz_rbgroup_difficulty"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addquiz_tv_difficulty">
 
@@ -269,9 +287,10 @@
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:entries="@{AddQuizViewModel.entries}"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/addquiz_rbgroup_difficulty"
             app:layout_constraintTop_toTopOf="@+id/addquiz_rbgroup_difficulty" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
