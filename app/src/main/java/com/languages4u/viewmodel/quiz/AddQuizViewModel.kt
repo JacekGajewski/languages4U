@@ -168,13 +168,13 @@ class AddQuizViewModel : ViewModel() {
 
     fun clear() {
         quizQuestionsList.value!!.clear()
-        quizName.value = "Quiz name"
-        quizDesc.value = "Quiz description"
-        question.value = "Question"
-        questionsNumber.value = "0"
-        answerA.value = "Answer A"
-        answerB.value = "Answer B"
-        answerC.value = "Answer C"
+        quizName.value = ""
+        quizDesc.value = ""
+        question.value = ""
+        questionsNumber.value = ""
+        answerA.value = ""
+        answerB.value = ""
+        answerC.value = ""
     }
 
     init {

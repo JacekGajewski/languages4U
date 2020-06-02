@@ -101,6 +101,7 @@
             android:ems="10"
             android:gravity="center"
             android:text="@={AddQuizViewModel.quizName}"
+            android:hint="Nazwa quizu"
             android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/addquiz_tv_name"
