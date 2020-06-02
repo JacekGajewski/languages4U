@@ -13,6 +13,9 @@ enum class ToastEvent(val event : String) {
     SignInCancelled("Sign in cancelled"),
     SignInFail("Sign in failed"),
     NoQuestionAdded("Add at least one question"),
+    NoQuizName("Add quiz name"),
+    NoQuestion("Add question"),
+    NoAnswer("Add all 3 possible answers"),
 
 //    Profile Setting
     AccountDeleted("Account was successfully deleted"),

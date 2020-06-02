@@ -28,4 +28,5 @@ class QuizListModel() {
         this.visibilty = visibility
         this.questions = questions
     }
+
 }

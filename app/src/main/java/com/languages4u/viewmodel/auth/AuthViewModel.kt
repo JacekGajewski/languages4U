@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.languages4u.auth.ILoginCallback
+import com.languages4u.data.DataOperations
 import com.languages4u.data.FirebaseOperations
 import com.languages4u.data.NaviEvent
 import com.languages4u.tools.SingleLiveEvent
@@ -13,12 +14,14 @@ import java.lang.Exception
 class AuthViewModel : ViewModel(), ILoginCallback {
     private val TAG = "AuthViewModel"
 
-    private val firebase by lazy {
-        FirebaseOperations.instance
-    }
+    var firebase : DataOperations = FirebaseOperations.instance
 
     val navigatePage : MutableLiveData<String> by lazy {
         SingleLiveEvent<String>() //SingleLiveEvent
+    }
+
+    val toastMsg : MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
     }
 
     fun onLoginClick() {
@@ -53,6 +56,9 @@ class AuthViewModel : ViewModel(), ILoginCallback {
 
     override fun onFailure(exception: Exception?) {
         Log.i(TAG, "onFailure()")
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (exception != null){
+            Log.i(TAG, exception.message.toString())
+            toastMsg.value = exception.message.toString()
+        }
     }
 }

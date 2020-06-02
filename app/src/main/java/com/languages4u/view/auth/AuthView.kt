@@ -79,6 +79,7 @@ class AuthView : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.navigatePage.observe(viewLifecycleOwner, naviObserver)
+        viewModel.toastMsg.observe(viewLifecycleOwner, toastMsgObserver)
     }
 
 
@@ -182,6 +183,11 @@ class AuthView : Fragment() {
         } else { // FACEBOOK
             fbCallbackManager.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    private val toastMsgObserver = Observer<String> { msg ->
+        Log.d(TAG, "Toast msg observer called")
+        Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
     }
 
     private fun showToast(message: String?) {
