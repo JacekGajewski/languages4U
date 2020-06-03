@@ -16,56 +16,7 @@
         tools:context=".view.MainActivity">
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_authorization_facebook"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:cardElevation="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.68">
-
-            <!--                android:translationZ="90dp" />-->
-
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button_facebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:background="@android:color/transparent"
-                android:onClick="@{() -> AuthViewModel.onLoginFacebookClick()}"
-                android:paddingTop="30dp"
-                android:translationZ="0dp"
-                app:com_facebook_login_text="" />
-
-            <TextView
-                android:id="@+id/login_button_facebook2"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/facebook_button"
-                android:gravity="center|center"
-                android:paddingStart="0dp"
-                android:paddingEnd="0dp"
-                android:text="@string/loguj_fb"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:com_facebook_login_text="@string/loguj_fb"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.488"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.665" />
-
-        </androidx.cardview.widget.CardView>
-
-<!--        <com.facebook.login.widget.LoginButton-->
+        <!--        <com.facebook.login.widget.LoginButton-->
 <!--            android:id="@+id/login_button_facebook"-->
 <!--            style="?android:attr/borderlessButtonStyle"-->
 <!--            android:layout_width="325dp"-->
@@ -86,6 +37,20 @@
 <!--            app:layout_constraintStart_toStartOf="parent"-->
 <!--            app:layout_constraintTop_toTopOf="parent"-->
 <!--            app:layout_constraintVertical_bias="0.665" />-->
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:onClick="@{() -> AuthViewModel.onLoginFacebookClick()}"
+            android:translationZ="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.65999997" />
 
         <Button
             android:id="@+id/btn_zarejestruj"
